@@ -71,7 +71,7 @@
           <div class="d-flex align-items-center bg-white">
             <div class="toggle-icon-wrapper">
               <button class="btn navbar-toggler-humburger-icon navbar-vertical-toggle" data-bs-toggle="tooltip" data-bs-placement="left" title="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
-            </div><a class="navbar-brand" href="wallet.jsp">
+            </div><a class="navbar-brand" href="wallet">
               <div class="d-flex align-items-center py-3">
                 <span class="fas fa-money-check text-secondary"  style="font-size: 30px; padding-right: 10px;"></span><span class="text-secondary dark__text-white "> 20KWD</span>
               </div>
@@ -112,14 +112,14 @@
                   <a class="nav-link" href="home" role="button">
                     <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-flag"></span></span><span class="nav-link-text ps-1">Dashboard</span></div>
                   </a>
-				  <a class="nav-link" href="order-summery" role="button">
+				  <a class="nav-link" href="order-history" role="button">
                     <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-flag"></span></span><span class="nav-link-text ps-1">Order History</span></div>
                   </a>
 				  <a class="nav-link" href="branch-summery" role="button">
                     <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-flag"></span></span><span class="nav-link-text ps-1">Branches Summary</span></div>
                   </a>
 
-				      <a class="nav-link" href="profile.jsp" role="button">
+				      <a class="nav-link" href="profile" role="button">
                     <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-flag"></span></span><span class="nav-link-text ps-1">Setting</span></div>
                   </a>
 
@@ -230,7 +230,7 @@
               <div class="dropdown-menu dropdown-caret dropdown-caret dropdown-menu-end py-0" aria-labelledby="navbarDropdownUser">
                 <div class="bg-white dark__bg-1000 rounded-2 py-2">
                   <a class="dropdown-item link-600 fw-medium" href="#">Change Password</a>
-                    <a class="dropdown-item link-600 fw-medium" href="login.jsp">Logout</a>
+                    <a class="dropdown-item link-600 fw-medium" href="/">Logout</a>
 
                 </div>
               </div>

@@ -74,7 +74,7 @@
           <div class="d-flex align-items-center bg-white">
             <div class="toggle-icon-wrapper">
               <button class="btn navbar-toggler-humburger-icon navbar-vertical-toggle" data-bs-toggle="tooltip" data-bs-placement="left" title="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
-            </div><a class="navbar-brand" href="wallet.jsp">
+            </div><a class="navbar-brand" href="wallet">
               <div class="d-flex align-items-center py-3">
                 <span class="fas fa-money-check text-secondary"  style="font-size: 30px; padding-right: 10px;"></span><span class="text-secondary dark__text-white "> 20KWD</span>
               </div>
@@ -115,13 +115,13 @@
                   <a class="nav-link" href="home" role="button">
                     <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-flag"></span></span><span class="nav-link-text ps-1">Dashboard</span></div>
                   </a>
-				  <a class="nav-link" href="order-summery" role="button">
+				  <a class="nav-link" href="order-history" role="button">
                     <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-flag"></span></span><span class="nav-link-text ps-1">Order History</span></div>
                   </a>
 				  <a class="nav-link" href="branch-summery" role="button">
                     <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-flag"></span></span><span class="nav-link-text ps-1">Branches Summary</span></div>
                   </a>
-				  <a class="nav-link" href="Setting.jsp" role="button">
+				  <a class="nav-link" href="setting" role="button">
                     <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-flag"></span></span><span class="nav-link-text ps-1">Setting</span></div>
                   </a>
 
@@ -251,7 +251,7 @@
                 <div class="card-header d-flex flex-between-center">
                   <h3 class="mb-0 text-primary fw-bold">Wallet</h3>
                   <div class="dropdown font-sans-serif btn-reveal-trigger">
-                    <a class="btn btn-falcon-default btn-sm text-600" href="wallet.jsp"><span class="fas fa-pencil-alt"></span></a>
+                    <a class="btn btn-falcon-default btn-sm text-600" href="wallet"><span class="fas fa-pencil-alt"></span></a>
                   </div>
                 </div>
 

@@ -86,7 +86,7 @@
                       <hr class="mb-0 navbar-vertical-divider">
                     </div>
                   </div>-->
-                  <a class="nav-link" href="driverorders.jsp" role="button">
+                  <a class="nav-link" href="driver-order" role="button">
                     <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-flag"></span></span><span class="nav-link-text ps-1">Driver-Dashboard</span></div>
                   </a>
 
@@ -190,7 +190,7 @@
               <div class="dropdown-menu dropdown-caret dropdown-caret dropdown-menu-end py-0" aria-labelledby="navbarDropdownUser">
                 <div class="bg-white dark__bg-1000 rounded-2 py-2">
                   <a class="dropdown-item link-600 fw-medium" href="#">Change Password</a>
-                    <a class="dropdown-item link-600 fw-medium" href="login.jsp">Logout</a>
+                    <a class="dropdown-item link-600 fw-medium" href="/">Logout</a>
 
                 </div>
               </div>
@@ -262,7 +262,7 @@
                     <div class="card-body position-relative">
                       <div class="row flex-center mb-2">
                         <!--<div class="col-auto bg-success rounded-3">
-						<a href="formpage.jsp">
+						<a href="form-page">
                           <h5 class="py-2 text-white fs-7" >New Order</h5> </a>
                         </div> -->
                         <div class="col-auto bg-secondary rounded-3 ms-2">
@@ -334,8 +334,8 @@
                                 <h5 class="mb-0 text-white">Failed</h5>
                               </th>
                               <th class="pe-0 text-end py-0 text-white">
-                                <a class=" btn-sm text-white" href="driverorders.jsp"><span class="fas fa-pencil-alt text-white text-end"></span> Edit</a>
-                                <a class=" btn-sm text-white" href="driverorders.jsp"><span class="far fa-address-book text-white text-end"></span> Details</a>
+                                <a class=" btn-sm text-white" href="driver-order"><span class="fas fa-pencil-alt text-white text-end"></span> Edit</a>
+                                <a class=" btn-sm text-white" href="driver-order"><span class="far fa-address-book text-white text-end"></span> Details</a>
                               </th>
                             </tr>
                           </table>
@@ -367,8 +367,8 @@
                                 <h5 class="mb-0 text-white">Failed</h5>
                               </th>
                               <th class="pe-0 text-end py-0 text-white">
-                                <a class=" btn-sm text-white" href="driverorders.jsp"><span class="fas fa-pencil-alt text-white text-end"></span> Edit</a>
-                                <a class=" btn-sm text-white" href="driverorders.jsp"><span class="far fa-address-book text-white text-end"></span> Details</a>
+                                <a class=" btn-sm text-white" href="driver-order"><span class="fas fa-pencil-alt text-white text-end"></span> Edit</a>
+                                <a class=" btn-sm text-white" href="driver-order"><span class="far fa-address-book text-white text-end"></span> Details</a>
                               </th>
                             </tr>
                           </table>
