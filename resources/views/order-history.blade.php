@@ -92,7 +92,7 @@
                   </a>
                   <ul class="nav collapse" id="dashboard">
                     <li class="nav-item">
-                      <a class="nav-link" href="landingPage.jsp">
+                      <a class="nav-link" href="home">
                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Default</span></div>
                       </a>
                     </li>
@@ -112,13 +112,13 @@
                       <hr class="mb-0 navbar-vertical-divider">
                     </div>
                   </div>-->
-                  <a class="nav-link" href="landingPage.jsp" role="button">
+                  <a class="nav-link" href="home" role="button">
                     <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-flag"></span></span><span class="nav-link-text ps-1">Dashboard</span></div>
                   </a>
-				  <a class="nav-link" href="orderHistory.jsp" role="button">
+				  <a class="nav-link" href="order-summery" role="button">
                     <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-flag"></span></span><span class="nav-link-text ps-1">Order History</span></div>
                   </a>
-				  <a class="nav-link" href="BranchesSummary.jsp" role="button">
+				  <a class="nav-link" href="branch-summery" role="button">
                     <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-flag"></span></span><span class="nav-link-text ps-1">Branches Summary</span></div>
                   </a>
 				  <a class="nav-link" href="Setting.jsp" role="button">
@@ -185,7 +185,7 @@
 
           <nav class="navbar navbar-light navbar-glass navbar-top navbar-expand bg-primary">
             <button class="btn navbar-toggler-humburger-icon navbar-toggler me-1 me-sm-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalCollapse" aria-controls="navbarVerticalCollapse" aria-expanded="false" aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
-            <a class="navbar-brand me-1 me-sm-3" href="landingPage.jsp">
+            <a class="navbar-brand me-1 me-sm-3" href="home">
             </a>
 
             <ul class="navbar-nav navbar-nav-icons ms-auto flex-row align-items-center">

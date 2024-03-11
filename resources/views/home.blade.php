@@ -86,13 +86,13 @@
                       <hr class="mb-0 navbar-vertical-divider">
                     </div>
                   </div>-->
-                  <a class="nav-link" href="landingPage.jsp" role="button">
+                  <a class="nav-link" href="home" role="button">
                     <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-flag"></span></span><span class="nav-link-text ps-1">Dashboard</span></div>
                   </a>
-				  <a class="nav-link" href="orderHistory.jsp" role="button">
+				  <a class="nav-link" href="order-summery" role="button">
                     <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-flag"></span></span><span class="nav-link-text ps-1">Order History</span></div>
                   </a>
-				  <a class="nav-link" href="BranchesSummary.jsp" role="button">
+				  <a class="nav-link" href="branch-summery" role="button">
                     <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-flag"></span></span><span class="nav-link-text ps-1">Branches Summary</span></div>
                   </a>
 
