@@ -232,7 +232,11 @@
               <div class="dropdown-menu dropdown-caret dropdown-caret dropdown-menu-end py-0" aria-labelledby="navbarDropdownUser">
                 <div class="bg-white dark__bg-1000 rounded-2 py-2">
                   <a class="dropdown-item link-600 fw-medium" href="#">Change Password</a>
-                    <a class="dropdown-item link-600 fw-medium" href="/">Logout</a>
+                   <form id="logout-form" action="{{ route('logout') }}" method="POST">
+    @csrf
+    <button type="submit" class="dropdown-item link-600 fw-medium">Logout</button>
+</form>
+
 
                 </div>
               </div>
