@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,69 +16,70 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [LoginController::class,'index'])->name('log');
+Route::get('/', [LoginController::class, 'index'])->name('log');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/register', [LoginController::class, 'register'])->name('register');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-
-
 
 Route::get('/register', function () {
     return view('register');
 });
 
-Route::get('/driver', function () {
-    return view('driver');
-});
+Route::middleware(['auth'])->group(function () {
 
-Route::get('/employee', function () {
-    return view('employee');
-});
+    Route::get('/driver', function () {
+        return view('driver');
+    });
 
-Route::get('/home', function () {
-    return view('home');
-});
+    Route::prefix('employee')->group(function () {
+        Route::get('/', [EmployeeController::class, 'index'])->name('employee');
+        Route::post('/store', [EmployeeController::class, 'store'])->name('employee.store');
+        Route::get('/edit/{id}', [EmployeeController::class, 'edit'])->name('employee.edit');
+        Route::put('/update/{id}',[EmployeeController::class, 'update'])->name('employee.update');
 
-Route::get('/branch', function () {
-    return view('branch');
-});
+    });
 
-Route::get('/profile', function () {
-    return view('profile');
-});
+    Route::get('/home', function () {
+        return view('home');
+    });
 
-Route::get('/subscription', function () {
-    return view('subscription');
-});
+    Route::get('/branch', function () {
+        return view('branch');
+    });
 
-Route::get('/invoice', function () {
-    return view('invoice');
-});
+    Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
 
-Route::get('/wallet', function () {
-    return view('wallet');
-});
+    Route::get('/subscription', function () {
+        return view('subscription');
+    });
 
-Route::get('/edit-employee', function () {
-    return view('edit-employee');
-});
+    Route::get('/invoice', function () {
+        return view('invoice');
+    });
 
-Route::get('/edit-profile', function () {
-    return view('edit-profile');
-});
+    Route::get('/wallet', function () {
+        return view('wallet');
+    });
 
-Route::get('/branch-summery', function () {
-    return view('branch-summery');
-});
 
-Route::get('/driver-order', function () {
-    return view('driver-order');
-});
 
-Route::get('/form-page', function () {
-    return view('form-page');
-});
+    Route::get('/edit-profile', function () {
+        return view('edit-profile');
+    });
 
-Route::get('/order-history', function () {
-    return view('order-history');
+    Route::get('/branch-summery', function () {
+        return view('branch-summery');
+    });
+
+    Route::get('/driver-order', function () {
+        return view('driver-order');
+    });
+
+    Route::get('/form-page', function () {
+        return view('form-page');
+    });
+
+    Route::get('/order-history', function () {
+        return view('order-history');
+    });
 });

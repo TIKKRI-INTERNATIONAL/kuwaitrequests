@@ -79,14 +79,14 @@
                             <h5 class="text-center pb-3 text-primary fw-bold fs-6">Delivery Solution Portal</h5>
 
                             @if ($errors->any())
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
 
                             <form method="POST" action="{{ route('register') }}">
                                 @csrf

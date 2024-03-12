@@ -14,11 +14,11 @@ class RolePermissionSeeder extends Seeder
      */
     public function run(): void
     {
-        $adminRole = Role::create(['name' => 'owner', 'guard_name' => 'web']);
-        Role::create(['name' => 'manager', 'guard_name' => 'web']);
-        Role::create(['name' => 'accountant', 'guard_name' => 'web']);
-        Role::create(['name' => 'employee', 'guard_name' => 'web']);
-        Role::create(['name' => 'driver', 'guard_name' => 'web']);
+        $adminRole = Role::create(['name' => 'Owner', 'guard_name' => 'web']);
+        Role::create(['name' => 'Manager', 'guard_name' => 'web']);
+        Role::create(['name' => 'Accountant', 'guard_name' => 'web']);
+        Role::create(['name' => 'Employee', 'guard_name' => 'web']);
+        Role::create(['name' => 'Driver', 'guard_name' => 'web']);
 
         // Create permissions
         Permission::create(['name' => 'create-post', 'guard_name' => 'web']);
