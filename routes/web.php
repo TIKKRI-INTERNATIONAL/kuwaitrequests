@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DriverController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
@@ -27,16 +28,18 @@ Route::get('/register', function () {
 
 Route::middleware(['auth'])->group(function () {
 
-    Route::get('/driver', function () {
-        return view('driver');
+    Route::prefix('driver')->group(function () {
+        Route::get('/', [DriverController::class, 'index'])->name('driver');
+        Route::post('/store', [DriverController::class, 'store'])->name('driver.store');
+        Route::get('/edit/{id}', [DriverController::class, 'edit'])->name('driver.edit');
+        Route::put('/update/{id}', [DriverController::class, 'update'])->name('driver.update');
     });
 
     Route::prefix('employee')->group(function () {
         Route::get('/', [EmployeeController::class, 'index'])->name('employee');
         Route::post('/store', [EmployeeController::class, 'store'])->name('employee.store');
         Route::get('/edit/{id}', [EmployeeController::class, 'edit'])->name('employee.edit');
-        Route::put('/update/{id}',[EmployeeController::class, 'update'])->name('employee.update');
-
+        Route::put('/update/{id}', [EmployeeController::class, 'update'])->name('employee.update');
     });
 
     Route::get('/home', function () {
@@ -48,6 +51,8 @@ Route::middleware(['auth'])->group(function () {
     });
 
     Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
+    Route::get('/edit-profile',  [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/update/profile',  [ProfileController::class, 'update'])->name('profile.update');
 
     Route::get('/subscription', function () {
         return view('subscription');
@@ -59,12 +64,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/wallet', function () {
         return view('wallet');
-    });
-
-
-
-    Route::get('/edit-profile', function () {
-        return view('edit-profile');
     });
 
     Route::get('/branch-summery', function () {

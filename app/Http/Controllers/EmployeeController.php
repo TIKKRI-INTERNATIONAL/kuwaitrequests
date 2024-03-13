@@ -17,9 +17,12 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $roles = Role::all();
+        $roles = Role::whereNotIn('id', [5])->get();
         $branches = Branch::all();
-        $employees = User::all();
+        $employees = User::whereDoesntHave('role', function ($query) {
+            $query->where('id', 5);
+        })->get();
+
         return view('employee', compact(['roles', 'branches', 'employees']));
     }
 
@@ -69,8 +72,10 @@ class EmployeeController extends Controller
     {
         // Find the user by ID
         $employee = User::findOrFail($id);
-        $employees = User::all();
-        $roles = Role::all();
+        $employees = User::whereDoesntHave('role', function ($query) {
+            $query->where('id', 5);
+        })->get();
+        $roles = Role::whereNotIn('id', [5])->get();
         $branches = Branch::all();
 
         // Pass the user data to the view for editing
