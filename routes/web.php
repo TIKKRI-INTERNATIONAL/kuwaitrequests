@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BranchController;
 use App\Http\Controllers\DriverController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\LoginController;
@@ -46,8 +47,11 @@ Route::middleware(['auth'])->group(function () {
         return view('home');
     });
 
-    Route::get('/branch', function () {
-        return view('branch');
+    Route::prefix('branch')->group(function () {
+        Route::get('/', [BranchController::class, 'index'])->name('branch');
+        Route::post('/store', [BranchController::class, 'store'])->name('branch.store');
+        Route::get('/edit/{id}', [BranchController::class, 'edit'])->name('branch.edit');
+        Route::put('/update/{id}', [BranchController::class, 'update'])->name('branch.update');
     });
 
     Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
