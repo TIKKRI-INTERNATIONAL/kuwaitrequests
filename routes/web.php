@@ -4,6 +4,7 @@ use App\Http\Controllers\BranchController;
 use App\Http\Controllers\DriverController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -58,6 +59,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/edit-profile',  [ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('/update/profile',  [ProfileController::class, 'update'])->name('profile.update');
 
+    Route::prefix('order')->group(function () {
+        Route::get('/', [OrderController::class, 'index'])->name('order');
+        Route::post('/store', [OrderController::class, 'store'])->name('order.store');
+        Route::get('/edit/{id}', [OrderController::class, 'edit'])->name('order.edit');
+        Route::put('/update/{id}', [OrderController::class, 'update'])->name('order.update');
+    });
+
     Route::get('/subscription', function () {
         return view('subscription');
     });
@@ -76,10 +84,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/driver-order', function () {
         return view('driver-order');
-    });
-
-    Route::get('/form-page', function () {
-        return view('form-page');
     });
 
     Route::get('/order-history', function () {

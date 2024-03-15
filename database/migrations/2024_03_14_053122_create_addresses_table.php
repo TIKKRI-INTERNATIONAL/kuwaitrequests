@@ -13,9 +13,16 @@ return new class extends Migration
     {
         Schema::create('addresses', function (Blueprint $table) {
             $table->id();
-            $table->string('legal_address');
-            $table->string('billing_address')->nullable();
-            $table->unsignedBigInteger('users_id');
+            $table->unsignedBigInteger('sub_id');
+            $table->string('type');
+            $table->string('area')->nullable();
+            $table->string('block')->nullable();
+            $table->string('street')->nullable();
+            $table->string('building_no')->nullable();
+            $table->string('jedda')->nullable();
+            $table->string('apartment')->nullable();
+            $table->string('floor')->nullable();
+            $table->text('notes')->nullable();
             $table->timestamps();
         });
     }

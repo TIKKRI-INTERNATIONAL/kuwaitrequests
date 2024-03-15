@@ -318,13 +318,13 @@
                                                                     value="{{ $branch->name }}" required>
                                                             </div>
                                                             <div class="mb-3 col-sm-6">
-                                                                <label for="email"
-                                                                    class="text-primary fs-10 fw-bold">Email Address
+                                                                <label for="mobile"
+                                                                    class="text-primary fs-10 fw-bold">Mobile
                                                                 </label>
-                                                                <input id="email"
-                                                                    class="form-control rounded-2 py-3" name="email"
-                                                                    type="email" placeholder="Email Address"
-                                                                    value="{{ $branch->email }}">
+                                                                <input id="mobile"
+                                                                    class="form-control rounded-2 py-3" name="mobile"
+                                                                    type="text" placeholder="Mobile"
+                                                                    value="{{ $branch->mobile }}">
                                                             </div>
                                                         </div>
 
@@ -359,7 +359,8 @@
                                                                     <th class="ps-0">
                                                                         <div class="text-black fw-bold fs-9 ">
                                                                             {{ $branch->name }}</div>
-                                                                        <div class="bold">{{ $branch->email }}</div>
+                                                                        <div class="bold">{{ $branch->mobile }}
+                                                                        </div>
                                                                     </th>
                                                                     <th class="pe-0 text-end ">
                                                                         <div class="text-success bold fs-6">
@@ -402,9 +403,6 @@
                                                 </div><!-- end of .container-->
                                             </section>
                                         </div>
-
-
-
 
                                     </div>
 

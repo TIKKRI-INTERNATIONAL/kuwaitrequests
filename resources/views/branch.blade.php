@@ -299,10 +299,18 @@
                                                                     placeholder="Branch Name" required>
                                                             </div>
                                                             <div class="mb-3 col-sm-6">
-                                                                <label for="Customer Name"
-                                                                    class="text-primary fs-10 fw-bold">EMAIL</label>
-                                                                <input class="form-control rounded-2 py-3" name="email"
-                                                                    type="email" placeholder="Email Address">
+                                                                <label for="Mobile"
+                                                                    class="text-primary fs-10 fw-bold">MOBILE</label>
+                                                                <input class="form-control rounded-2 py-3" name="mobile"
+                                                                    type="text" placeholder="MOBILE">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row gx-2">
+                                                            <div class="mb-3 col-sm-6">
+                                                                <label for="Customer Phone"
+                                                                    class="text-primary fs-10 fw-bold"> Address</label>
+                                                                <button class="btn btn-primary d-block w-100"
+                                                                    type="button">Address</button>
                                                             </div>
                                                         </div>
                                                         <button
@@ -337,7 +345,7 @@
                                                         <tr class="border-bottom">
                                                             <th class="ps-0">
                                                                 <div class="text-black fw-bold fs-9 ">{{ $branch->name }}</div>
-                                                                <div class="bold">{{ $branch->email }}</div>
+                                                                <div class="bold">{{ $branch->mobile }}</div>
                                                             </th>
                                                             <th class="pe-0 text-end ">
                                                                 <div class="text-success bold fs-6">

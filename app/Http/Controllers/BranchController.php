@@ -28,7 +28,7 @@ class BranchController extends Controller
         try {
             $validatedData = $request->validate([
                 'name' => 'required|string|max:255',
-                'email' => 'nullable|string|email|max:255|unique:branches',
+                'mobile' => 'nullable|string',
             ]);
 
             // Start a database transaction
@@ -37,7 +37,7 @@ class BranchController extends Controller
             // Create a new branch instance using the create method
               Branch::create([
                 'name' => $validatedData['name'],
-                'email' =>  $validatedData['email'],
+                'mobile' =>  $validatedData['mobile'],
             ]);
 
             // Commit the transaction
@@ -75,7 +75,7 @@ class BranchController extends Controller
             // Validate the request data
             $validatedData = $request->validate([
                 'name' => 'required|string|max:255',
-                'email' => 'nullable|string|max:255',
+                'mobile' => 'nullable|string',
             ]);
 
             // Start a database transaction
@@ -85,7 +85,7 @@ class BranchController extends Controller
               $branch = Branch::where('id', $id)->firstOrFail();
               $branch->update([
                   'name' => $validatedData['name'],
-                  'email' => $validatedData['email']
+                  'mobile' => $validatedData['mobile']
               ]);
 
             // Commit the transaction

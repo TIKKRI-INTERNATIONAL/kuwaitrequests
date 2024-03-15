@@ -265,10 +265,6 @@
 
                     <div class="card-body position-relative">
                       <div class="row flex-center mb-2">
-                        <!--<div class="col-auto bg-success rounded-3">
-						<a href="form-page">
-                          <h5 class="py-2 text-white fs-7" >New Order</h5> </a>
-                        </div> -->
                         <div class="col-auto bg-secondary rounded-3 ms-2">
                           <h5 class="py-2 text-white fs-7">10</h5>
                         </div>

@@ -16,6 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('users_id');
             $table->string('merchant_name')->nullable();
             $table->string('legal_name')->nullable();
+            $table->string('legal_address');
+            $table->string('billing_address')->nullable();
             $table->text('contract_photo')->nullable();
             $table->text('signatory_document')->nullable();
             $table->text('articles_of_association')->nullable();
