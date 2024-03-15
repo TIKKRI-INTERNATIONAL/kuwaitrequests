@@ -327,13 +327,12 @@
                         <div class="col-lg-9 px-lg-0">
                             <div class="row ms-lg-0 pe-lg-2">
 
-
                                 <div class="col-xxl-12 col-md-12 pt-3">
                                     <div class="card shopping-cart-bar-min-height h-100">
                                         <div class="card-header d-flex flex-between-center">
                                             <h3 class="mb-0 text-primary fw-bold">Profile</h3>
                                             <div class="dropdown font-sans-serif btn-reveal-trigger">
-                                                <a class="btn btn-primary d-block w-100" href="edit-employee"><span
+                                                <a class="btn btn-primary d-block w-100" href="edit-profile"><span
                                                         class="fas fa-pencil-alt"></span>Edti Profile</a>
                                             </div>
                                         </div>
@@ -361,11 +360,11 @@
                                         <div class="card-body px-4 py-3 my-2">
                                             <h4 class="text-800">LEGAL ADDRESS
                                             </h4>
-                                            <p class="text-800">{{  $user->legal_address }}</p>
+                                            {{-- <p class="text-800">{{  $user->legal_address }}</p> --}}
 
                                             <h4 class="text-800">BILLING ADDRESS
                                             </h4>
-                                            <p class="text-800">{{  $user->billing_address }}</p>
+                                            {{-- <p class="text-800">{{  $user->billing_address }}</p> --}}
 
                                             <p class="text-800">DEFAULT CURRENCY <br>
                                                 KWD</p>
