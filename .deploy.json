@@ -1,0 +1,7 @@
+{
+  "DEPLOYPATH" : "/home/kwt-request/public_html/merchant",  // DEPLOYPATH : where changes will be deployed
+  "task" :  {
+    "1" : "app",   // This will deploy only index.php file
+    "1" : "bootstrap",      // This will deploy Entire images Directory with all its files
+  }
+}
