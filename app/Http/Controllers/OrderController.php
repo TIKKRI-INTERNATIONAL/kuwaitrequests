@@ -21,7 +21,8 @@ class OrderController extends Controller
     {
         $pays = PaymentType::all();
         $types = VehicleType::all();
-        return view('form-page', compact(['pays', 'types']));
+        $orders = Order::all();
+        return view('form-page', compact(['pays', 'types', 'orders']));
     }
 
     /**
