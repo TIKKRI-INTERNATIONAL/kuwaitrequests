@@ -9,7 +9,6 @@
     <!-- ===============================================--><!--    Document Title--><!-- ===============================================-->
     <title>Form Page | Delivery Solution Portal</title>
 
-
     <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicons/favicon-16x16.png">
@@ -491,19 +490,44 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="tab-pane text-center px-sm-3 px-md-5" role="tabpanel"
-                                            aria-labelledby="bootstrap-wizard-tab4" id="bootstrap-wizard-tab4">
-                                            <h4 class="mb-1">Your all data correct ?</h4>
-                                            <p>Now you can create order</p><a class="btn btn-primary px-5 my-3"
-                                                href="#">Create Order</a>
-                                        </div>
-
                                     </div>
                                 </form>
+                                <div class="col-lg-12 col-md-6 pt-3 pb-3">
+                                    <div class="card">
+                                        <div class="card-body bg-body-tertiary">
+                                            <table class="table table-borderless fs-10 mb-0 text-start mb-3">
+                                                @foreach ($orders as $order)
+                                                    <tr class="border-bottom">
+                                                        <th class="ps-0">
+                                                            <div class="text-black fw-bold fs-9">
+                                                                {{ $order->order_no }}</div>
+                                                            <div class="bold">{{ $order->amount }} KWD
+                                                            </div>
+                                                            <div class="text-800 fw-normal fs-11">
+                                                                {{ $order->status }}
+                                                            </div>
+                                                        </th>
+                                                        <th class="pe-0 text-end ">
+                                                            <div class="text-success bold fs-6">
+                                                                <div
+                                                                    class="dropdown font-sans-serif btn-reveal-trigger">
+                                                                    <a class="btn btn-falcon-default btn-sm text-600"
+                                                                        href="{{ url('order-history') }}"><span
+                                                                            class="fas fa-eye"></span> View</a>
+                                                                </div>
+                                                            </div>
+                                                        </th>
+                                                    </tr>
+                                                @endforeach
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
                         </div>
                     </div>
+
 
 
                     <!-- <section> close ============================--><!-- ============================================-->
@@ -547,8 +571,36 @@
                     selectedPayInput.value = payId;
                 });
             });
+            
+            // Get all 'previous' buttons
+            var previousButtons = document.querySelectorAll('.previous');
+
+            // Add click event listener to each 'previous' button
+            previousButtons.forEach(function (button) {
+                button.addEventListener('click', function () {
+                    // Find the parent tab-pane element and get its ID
+                    var currentTabPane = button.closest('.tab-pane');
+                    var currentTabPaneId = currentTabPane.id;
+
+                    // Find the previous tab-pane
+                    var previousTabPaneId = 'bootstrap-wizard-tab1'; // ID of the first tab-pane
+
+                    // If the current tab-pane is not the first one
+                    if (currentTabPaneId !== 'bootstrap-wizard-tab1') {
+                        // Find the previous tab-pane's ID dynamically
+                        var currentTabPaneIndex = currentTabPaneId.split('bootstrap-wizard-tab')[1];
+                        previousTabPaneId = 'bootstrap-wizard-tab' + (parseInt(currentTabPaneIndex) - 1);
+                    }
+
+                    // Activate the previous tab-pane
+                    var previousTabPane = document.getElementById(previousTabPaneId);
+                    var tabLink = document.querySelector('a[href="#' + previousTabPaneId + '"]');
+                    tabLink.click();
+                });
+            });
         });
     </script>
+
     <!-- Bootstrap Bundle with Popper -->
 
     <script>
