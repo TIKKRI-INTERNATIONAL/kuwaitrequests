@@ -274,11 +274,11 @@
                                     <div class="col-xxl-12 col-md-12 pt-3">
                                         <div class="card shopping-cart-bar-min-height h-100">
                                             <div class="card-header d-flex flex-between-center">
-                                                <h3 class="mb-0 text-primary fw-bold">Manage Employee</h3>
+                                                <h3 class="mb-0 text-primary fw-bold">Manage Driver</h3>
                                                 <div class="dropdown font-sans-serif btn-reveal-trigger">
                                                     <a class="btn btn-primary d-block w-100"
-                                                        href="{{ url('employee') }}"><span
-                                                            class="fas fa-pencil-alt"></span>Create Employee</a>
+                                                        href="{{ url('driver') }}"><span
+                                                            class="fas fa-pencil-alt"></span>Create Driver</a>
                                                 </div>
                                             </div>
 
@@ -303,74 +303,99 @@
                                                     id="bootstrap-wizard-tab1">
 
                                                     <form method="POST"
-                                                        action="{{ route('employee.update', ['id' => $employee->id]) }}">
+                                                        action="{{ route('driver.update', $driver->id) }}">
                                                         @csrf
                                                         @method('PUT')
-
                                                         <div class="row gx-2">
                                                             <div class="mb-3 col-sm-6">
-                                                                <label for="name"
-                                                                    class="text-primary fs-10 fw-bold">NAME</label>
-                                                                <input class="form-control rounded-2 py-3"
-                                                                    type="text" name="name"
-                                                                    placeholder="Employee Name"
-                                                                    value="{{ $employee->name }}">
+                                                                <label for="driver_name"
+                                                                    class="text-primary fs-10 fw-bold">Driver
+                                                                    Name</label>
+                                                                <input id="driver_name"
+                                                                    class="form-control rounded-2 py-3" name="name"
+                                                                    type="text" placeholder="Driver Name"
+                                                                    value="{{ $driver->name }}" required>
                                                             </div>
                                                             <div class="mb-3 col-sm-6">
-                                                                <label for="email"
-                                                                    class="text-primary fs-10 fw-bold">EMAIL</label>
-                                                                <input class="form-control rounded-2 py-3"
-                                                                    type="email" name="email"
-                                                                    placeholder="Email Address"
-                                                                    value="{{ $employee->email }}">
+                                                                <label for="driver_mobile"
+                                                                    class="text-primary fs-10 fw-bold">Driver Mobile
+                                                                    Number</label>
+                                                                <input id="driver_mobile"
+                                                                    class="form-control rounded-2 py-3" name="mobile"
+                                                                    type="tel" placeholder="Driver Mobile Number"
+                                                                    value="{{ $driver->mobile }}" required>
                                                             </div>
                                                         </div>
-
+                                                        <div class="row gx-2">
+                                                            <div class="mb-3 col-sm-6">
+                                                                <label for="civil_id"
+                                                                    class="text-primary fs-10 fw-bold">Civil ID
+                                                                    Number</label>
+                                                                <input id="civil_id"
+                                                                    class="form-control rounded-2 py-3"
+                                                                    name="civil_id" type="text"
+                                                                    placeholder="Civil ID Number"
+                                                                    value="{{ $driver->civil_id }}">
+                                                            </div>
+                                                            <div class="mb-3 col-sm-6">
+                                                                <label for="vehicle_license"
+                                                                    class="text-primary fs-10 fw-bold">Vehicle License
+                                                                    Plate</label>
+                                                                <input id="vehicle_license"
+                                                                    class="form-control rounded-2 py-3"
+                                                                    name="vehicle_liecence" type="text"
+                                                                    placeholder="Vehicle License Plate"
+                                                                    value="{{ $driver->vehicle_liecence }}">
+                                                            </div>
+                                                        </div>
                                                         <div class="row gx-2">
                                                             <div class="mb-3 col-sm-8">
-                                                                <label class="text-primary fs-10 fw-bold">Role</label>
-                                                                <ul class="nav nav-pills mb-3" role="tablist">
-                                                                    @foreach ($roles as $role)
+                                                                <label for="vehicle_type"
+                                                                    class="text-primary fs-10 fw-bold">Vehicle
+                                                                    Type</label>
+                                                                <ul class="nav nav-pills mb-3">
+                                                                    @foreach ($types as $type)
                                                                         <li class="nav-item border"
                                                                             role="presentation">
                                                                             <button
-                                                                                class="nav-link role-select{{ $employee->roles_id == $role->id ? ' active' : '' }}"
-                                                                                type="button" role="tab"
-                                                                                aria-selected="{{ $employee->roles_id == $role->id ? 'true' : 'false' }}"
-                                                                                data-role-id="{{ $role->id }}">
+                                                                                class="nav-link type-select{{ $type->id == $driver->vehicle_types_id ? ' active' : '' }}"
+                                                                                data-bs-toggle="pill" type="button"
+                                                                                role="tab"
+                                                                                aria-selected="{{ $type->id == $driver->vehicle_types_id ? 'true' : 'false' }}"
+                                                                                data-type-id="{{ $type->id }}">
                                                                                 <span
-                                                                                    class="d-md-inline-block py-2">{{ $role->name }}</span>
+                                                                                    class="d-md-inline-block py-2">{{ $type->name }}</span>
                                                                             </button>
                                                                         </li>
                                                                     @endforeach
                                                                 </ul>
-                                                                <input type="hidden" name="roles"
-                                                                    id="selectedRole">
-
+                                                                <input type="hidden" name="vehicle_types_id"
+                                                                    id="selectedType"
+                                                                    value="{{ $driver->vehicle_types_id }}">
                                                             </div>
                                                             <div class="mb-3 col-sm-4">
-                                                                <label class="form-label text-primary fs-10 fw-bold"
-                                                                    for="branch">BRANCH</label>
-                                                                <select class="form-select rounded-2 py-3"
-                                                                    name="branch" id="branch">
-                                                                    <option value="">Select Branch</option>
-                                                                    <!-- Assuming $branches is a collection of branches -->
-                                                                    @foreach ($branches as $branch)
-                                                                        <option value="{{ $branch->id }}"
-                                                                            {{ $employee->branches_id == $branch->id ? 'selected' : '' }}>
-                                                                            {{ $branch->name }}
-                                                                        </option>
-                                                                    @endforeach
-                                                                </select>
+                                                                <div class="mb-3">
+                                                                    <label
+                                                                        class="form-label text-primary fs-10 fw-bold"
+                                                                        for="branch">Branch</label>
+                                                                    <select class="form-select rounded-2 py-3"
+                                                                        name="branch" id="branch">
+                                                                        <option value="">Select Branch</option>
+                                                                        @foreach ($branches as $branch)
+                                                                            <option value="{{ $branch->id }}"
+                                                                                {{ $branch->id == $user->branches_id ? 'selected' : '' }}>
+                                                                                {{ $branch->name }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                         <button
                                                             class="btn btn-primary px-2 px-sm-4 py-2 rounded-5 fs-8"
-                                                            type="submit">Update <span
+                                                            type="submit">Update<span
                                                                 class="fas fa-chevron-right ms-2"
                                                                 data-fa-transform="shrink-3"></span></button>
                                                     </form>
-
 
                                                     <div class="card-footer bg-body-tertiary">
                                                         <div class="px-sm-3 px-md-5">
@@ -393,29 +418,24 @@
                                                         <table
                                                             class="table table-borderless fs-10 mb-0 text-start mb-3">
 
-                                                            @foreach ($employees as $employee)
-                                                                <tr class="border-bottom">
-                                                                    <th class="ps-0">
-                                                                        <div class="text-black fw-bold fs-9">
-                                                                            {{ $employee->name }}</div>
-                                                                        <div class="bold">
-                                                                            {{ $employee->role->name }}
+                                                            @foreach ($drivers as $driver)
+                                                            <tr class="border-bottom">
+                                                                <th class="ps-0">
+                                                                    <div class="text-black fw-bold fs-9 ">{{ $driver->name }}</div>
+                                                                    <div class="bold">{{ $driver->type->name }}</div>
+                                                                    <div class="text-800 fw-normal fs-11"> {{ $driver->vehicle_liecence }}</div>
+                                                                </th>
+                                                                <th class="pe-0 text-end ">
+                                                                    <div class="text-success bold fs-6">
+                                                                        <div
+                                                                            class="dropdown font-sans-serif btn-reveal-trigger">
+                                                                            <a class="btn btn-falcon-default btn-sm text-600"
+                                                                                href="{{ route('driver.edit', $driver->id) }}"><span
+                                                                                    class="fas fa-pencil-alt"></span>Edit</a>
                                                                         </div>
-                                                                        <div class="text-800 fw-normal fs-11">
-                                                                            {{ $employee->created_at->format('d/m/Y H:i:s') }}
-                                                                        </div>
-                                                                    </th>
-                                                                    <th class="pe-0 text-end ">
-                                                                        <div class="text-success bold fs-6">
-                                                                            <div
-                                                                                class="dropdown font-sans-serif btn-reveal-trigger">
-                                                                                <a class="btn btn-falcon-default btn-sm text-600"
-                                                                                    href="{{ route('employee.edit', $employee->id) }}"><span
-                                                                                        class="fas fa-pencil-alt"></span>Edit</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </th>
-                                                                </tr>
+                                                                    </div>
+                                                                </th>
+                                                            </tr>
                                                             @endforeach
                                                         </table>
 
@@ -462,24 +482,24 @@
     <script>
         // JavaScript to handle role selection and update the hidden input field
         document.addEventListener('DOMContentLoaded', function() {
-            const roleButtons = document.querySelectorAll('.role-select');
-            const selectedRoleInput = document.getElementById('selectedRole');
+            const typeButtons = document.querySelectorAll('.type-select');
+            const selectedTypeInput = document.getElementById('selectedType');
 
-            roleButtons.forEach(function(button) {
+            typeButtons.forEach(function(button) {
                 button.addEventListener('click', function() {
                     // Remove 'active' class from all buttons
-                    roleButtons.forEach(function(btn) {
+                    typeButtons.forEach(function(btn) {
                         btn.classList.remove('active');
                     });
 
                     // Add 'active' class to the clicked button
                     this.classList.add('active');
 
-                    // Get the role ID from data-role-id attribute
-                    const roleId = this.getAttribute('data-role-id');
+                    // Get the type ID from data-type-id attribute
+                    const typeId = this.getAttribute('data-type-id');
 
                     // Update the value of the hidden input field
-                    selectedRoleInput.value = roleId;
+                    selectedTypeInput.value = typeId;
                 });
             });
         });

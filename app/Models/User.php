@@ -21,6 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'roles_id',
+        'branches_id',
     ];
 
     /**
@@ -42,4 +44,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function role()
+    {
+        return $this->hasOne(Role::class,'id', 'roles_id');
+    }
+
+    public function branch()
+    {
+        return $this->hasOne(Branch::class, 'id', 'branches_id');
+    }
 }

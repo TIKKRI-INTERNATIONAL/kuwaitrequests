@@ -7,29 +7,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- ===============================================--><!--    Document Title--><!-- ===============================================-->
-    <title>Wallet | Delivery Solution Portal</title>
+    <title>Form Page | Delivery Solution Portal</title>
 
-    <!-- ===============================================--><!--    Favicons--><!-- ===============================================-->
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicons/favicon-16x16.png">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicons/favicon.ico">
-    <link rel="manifest" href="assets/img/favicons/manifest.json">
-    <meta name="msapplication-TileImage" content="assets/img/favicons/mstile-150x150.png">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url('assets/img/favicons/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url('assets/img/favicons/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url('assets/img/favicons/favicon-16x16.png') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url('assets/img/favicons/favicon.ico') }}">
+    <link rel="manifest" href="{{ url('assets/img/favicons/manifest.json') }}">
+    <meta name="msapplication-TileImage" content="{{ url('assets/img/favicons/mstile-150x150.png') }}">
     <meta name="theme-color" content="#ffffff">
-    <script src="assets/js/config.js"></script>
-    <script src="vendors/simplebar/simplebar.min.js"></script>
+    <script src="{{ url('assets/js/config.js') }}"></script>
+    <script src="{{ url('vendors/simplebar/simplebar.min.js') }}"></script>
+
 
     <!-- ===============================================--><!--    Stylesheets--><!-- ===============================================-->
-    <link href="vendors/prism/prism-okaidia.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="css?family=Open+Sans:300,400,500,600,700%7cPoppins:300,400,500,600,700,800,900&amp;display=swap"
-        rel="stylesheet">
-    <link href="vendors/simplebar/simplebar.min.css" rel="stylesheet">
-    <link href="assets/css/theme-rtl.min.css" rel="stylesheet" id="style-rtl">
-    <link href="assets/css/theme.min.css" rel="stylesheet" id="style-default">
-    <link href="assets/css/user-rtl.min.css" rel="stylesheet" id="user-style-rtl">
-    <link href="assets/css/user.min.css" rel="stylesheet" id="user-style-default">
+    <link href="{{ url('vendors/prism/prism-okaidia.css') }}" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&display=swap" rel="stylesheet">
+
+    <link href="{{ url('vendors/simplebar/simplebar.min.css') }}" rel="stylesheet">
+    <link href="{{ url('assets/css/theme-rtl.min.css') }}" rel="stylesheet" id="style-rtl">
+    <link href="{{ url('assets/css/theme.min.css') }}" rel="stylesheet" id="style-default">
+    <link href="{{ url('assets/css/user-rtl.min.css') }}" rel="stylesheet" id="user-style-rtl">
+    <link href="{{ url('assets/css/user.min.css') }}" rel="stylesheet" id="user-style-default">
+
     <script>
         var isRTL = JSON.parse(localStorage.getItem('isRTL'));
         if (isRTL) {
@@ -61,6 +65,7 @@
             </script>
 
 
+
             <nav class="navbar  navbar-card navbar-vertical navbar-expand-xl">
                 <script>
                     var navbarStyle = localStorage.getItem("navbarStyle");
@@ -73,7 +78,7 @@
                         <button class="btn navbar-toggler-humburger-icon navbar-vertical-toggle"
                             data-bs-toggle="tooltip" data-bs-placement="left" title="Toggle Navigation"><span
                                 class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
-                    </div><a class="navbar-brand" href="wallet">
+                    </div><a class="navbar-brand" href="{{ url('wallet') }}">
                         <div class="d-flex align-items-center py-3">
                             <span class="fas fa-money-check text-secondary"
                                 style="font-size: 30px; padding-right: 10px;"></span><span
@@ -87,67 +92,29 @@
                     <div class="navbar-vertical-content scrollbar">
 
                         <ul class="navbar-nav flex-column mb-3" id="navbarVerticalNav">
-                            <!--<li class="nav-item">
-                  <a class="nav-link dropdown-indicator" href="#dashboard" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="dashboard">
-                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-chart-pie"></span></span><span class="nav-link-text ps-1">Dashboard</span></div>
-                  </a>
-                  <ul class="nav collapse" id="dashboard">
-                    <li class="nav-item">
-                      <a class="nav-link" href="home">
-                        <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Default</span></div>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="dashboard/analytics.html">
-                        <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Default 02</span></div>
-                      </a>
-                    </li>
-
-                  </ul>
-                </li>-->
 
                             <li class="nav-item"><!-- label-->
-                                <!--<div class="row navbar-vertical-label-wrapper mt-3 mb-2">
-                    <div class="col-auto navbar-vertical-label">Section Title 01</div>
-                    <div class="col ps-0">
-                      <hr class="mb-0 navbar-vertical-divider">
-                    </div>
-                  </div>-->
-                                <a class="nav-link" href="home" role="button">
+
+                                <a class="nav-link" href="{{ url('home') }}" role="button">
                                     <div class="d-flex align-items-center"><span class="nav-link-icon"><span
                                                 class="fas fa-flag"></span></span><span
                                             class="nav-link-text ps-1">Dashboard</span></div>
                                 </a>
-                                <a class="nav-link" href="order-history" role="button">
+                                <a class="nav-link" href="{{ url('order-history') }}" role="button">
                                     <div class="d-flex align-items-center"><span class="nav-link-icon"><span
-                                                class="fas fa-flag"></span></span><span
-                                            class="nav-link-text ps-1">Order History</span></div>
+                                                class="fas fa-flag"></span></span><span class="nav-link-text ps-1">Order
+                                            History</span></div>
                                 </a>
-                                <a class="nav-link" href="branch-summery" role="button">
+                                <a class="nav-link" href="{{ url('branch-summary') }}" role="button">
                                     <div class="d-flex align-items-center"><span class="nav-link-icon"><span
                                                 class="fas fa-flag"></span></span><span
                                             class="nav-link-text ps-1">Branches Summary</span></div>
                                 </a>
-
-                                <a class="nav-link" href="profile" role="button">
+                                <a class="nav-link" href="{{ url('profile') }}" role="button">
                                     <div class="d-flex align-items-center"><span class="nav-link-icon"><span
                                                 class="fas fa-flag"></span></span><span
                                             class="nav-link-text ps-1">Setting</span></div>
                                 </a>
-
-                                <!-- <a class="nav-link dropdown-indicator" href="#faq" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="faq">
-                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-question-circle"></span></span><span class="nav-link-text ps-1">Sample 02</span></div>
-                  </a>
-                  <ul class="nav collapse" id="faq">
-                    <li class="nav-item"><a class="nav-link" href="$">
-                        <div class="d-flex align-items-center"><span class="nav-link-text ps-1">FSample 03</span></div>
-                      </a>
-                    </li>
-                  </ul>
-
-                </li>-->
-
-
 
                             <li class="nav-item"><!-- label-->
                                 <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
@@ -161,35 +128,13 @@
                                                 class="fas fa-rocket"></span></span><span
                                             class="nav-link-text ps-1">Arabic</span></div>
                                 </a>
-                                <!--<a class="nav-link dropdown-indicator" href="#customization" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="customization">
-                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-wrench"></span></span><span class="nav-link-text ps-1">Sample 05</span></div>
-                  </a>
-                  <ul class="nav collapse" id="customization">
-                    <li class="nav-item"><a class="nav-link" href="#">
-                        <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Sample 06</span><span class="badge rounded-pill ms-2 badge-subtle-success">Updated</span></div>
-                      </a>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="#">
-                        <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Sample 07</span></div>
-                      </a>
-                    </li>
-                  </ul>-->
+
                             </li>
                         </ul>
 
                     </div>
                 </div>
             </nav>
-
-
-
-
-
-
-
-
-
-
 
             <div class="content">
 
@@ -199,7 +144,7 @@
                         aria-controls="navbarVerticalCollapse" aria-expanded="false"
                         aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span
                                 class="toggle-line"></span></span></button>
-                    <a class="navbar-brand me-1 me-sm-3" href="home">
+                    <a class="navbar-brand me-1 me-sm-3" href="{{ url('profile') }}">
                     </a>
 
                     <ul class="navbar-nav navbar-nav-icons ms-auto flex-row align-items-center">
@@ -267,14 +212,11 @@
                                         <button type="submit"
                                             class="dropdown-item link-600 fw-medium">Logout</button>
                                     </form>
-
-
                                 </div>
                             </div>
                         </li>
                     </ul>
                 </nav>
-
 
                 <div class="row  rounded-2">
                     <section class="text-center py-0 px-0">
@@ -290,8 +232,6 @@
 
                     <div class="col-lg-12 row">
                         <div class="col-lg-3 pe-lg-0 pt-3">
-
-
                             <div class="card">
                                 <div class="tab-content">
                                     <div class="tab-pane preview-tab-pane active" role="tabpanel"
@@ -301,19 +241,22 @@
                                                 class="list-group-item list-group-item-action active"
                                                 href="#">Setting</a>
                                             <a class="list-group-item list-group-item-action"
-                                                href="profile">Profile</a>
-                                            <a class="list-group-item list-group-item-action" href="employee">Manage
+                                                href="{{ url('profile') }}">Profile</a>
+                                            <a class="list-group-item list-group-item-action"
+                                                href="{{ url('employee') }}">Manage
                                                 Employee</a>
-                                            <a class="list-group-item list-group-item-action" href="driver">Manage
+                                            <a class="list-group-item list-group-item-action"
+                                                href="{{ url('driver') }}">Manage
                                                 Driver</a>
-                                            <a class="list-group-item list-group-item-action" href="branch">Manage
+                                            <a class="list-group-item list-group-item-action"
+                                                href="{{ url('branch') }}">Manage
                                                 Branches</a>
                                             <a class="list-group-item list-group-item-action"
-                                                href="invoice">Invoices</a>
+                                                href="{{ url('invoice') }}">Invoices</a>
                                             <a class="list-group-item list-group-item-action"
-                                                href="subscription">Subscription Plan</a>
+                                                href="{{ url('subscription') }}">Subscription Plan</a>
                                             <a class="list-group-item list-group-item-action"
-                                                href="wallet">Wallet</a>
+                                                href="{{ url('wallet') }}">Wallet</a>
                                             <a class="list-group-item list-group-item-action" href="#">API
                                                 Setting</a>
 
@@ -327,68 +270,115 @@
                         <div class="col-lg-9 px-lg-0">
                             <div class="row ms-lg-0 pe-lg-2">
 
-                                <div class="col-xxl-12 col-md-12 pt-3">
-                                    <div class="card shopping-cart-bar-min-height h-100">
-                                        <div class="card-header d-flex flex-between-center">
-                                            <h3 class="mb-0 text-primary fw-bold">Profile</h3>
-                                            <div class="dropdown font-sans-serif btn-reveal-trigger">
-                                                <a class="btn btn-primary d-block w-100" href="edit-profile"><span
-                                                        class="fas fa-pencil-alt"></span>Edti Profile</a>
+                                <div class="col-lg-6 col-xl-12 col-xxl-8 h-100 pt-5">
+                                    <div class="col-xxl-12 col-md-12 pt-3">
+                                        <div class="card shopping-cart-bar-min-height h-100">
+                                            <div class="card-header d-flex flex-between-center">
+                                                <h3 class="mb-0 text-primary fw-bold">Manage Branch</h3>
+                                                <div class="dropdown font-sans-serif btn-reveal-trigger">
+                                                    <a class="btn btn-primary d-block w-100"
+                                                        href="{{ url('branch') }}"><span
+                                                            class="fas fa-pencil-alt"></span>Create Branch</a>
+                                                </div>
                                             </div>
+
                                         </div>
-
+                                        <br>
                                     </div>
-
-                                </div>
-
-                                <div class="col-lg-6 pt-3">
-                                    <div class="card h-100">
-                                        <div class="card-body px-4 py-3 my-2">
-
-                                            <div class="alert alert-success mt-3">
-                                                <h3 class="mb-0 fs-4 fw-bold text-left">{{  $user->name }}
-                                                </h3>
+                                    <div class="card theme-wizard mb-5">
+                                        @if ($errors->any())
+                                            <div class="alert alert-danger">
+                                                <ul>
+                                                    @foreach ($errors->all() as $error)
+                                                        <li>{{ $error }}</li>
+                                                    @endforeach
+                                                </ul>
                                             </div>
-                                            <p class="text-800">LEGAL NAME<br>
-                                                {{  $user->name }}</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                        @endif
 
-                                <div class="col-lg-6 pt-3">
-                                    <div class="card h-100">
-                                        <div class="card-body px-4 py-3 my-2">
-                                            <h4 class="text-800">LEGAL ADDRESS
-                                            </h4>
-                                            {{-- <p class="text-800">{{  $user->legal_address }}</p> --}}
+                                        <div class="card-body py-4">
+                                            <div class="tab-content">
+                                                <div class="tab-pane active px-sm-3 px-md-5" role="tabpanel"
+                                                    aria-labelledby="bootstrap-wizard-tab1"
+                                                    id="bootstrap-wizard-tab1">
 
-                                            <h4 class="text-800">BILLING ADDRESS
-                                            </h4>
-                                            {{-- <p class="text-800">{{  $user->billing_address }}</p> --}}
+                                                    <form method="POST"
+                                                        action="{{ route('branch.update', $branch->id) }}">
+                                                        @csrf
+                                                        @method('PUT')
 
-                                            <p class="text-800">DEFAULT CURRENCY <br>
-                                                KWD</p>
+                                                        <div class="row gx-2">
+                                                            <div class="mb-3 col-sm-6">
+                                                                <label for="name"
+                                                                    class="text-primary fs-10 fw-bold">Branch
+                                                                    Name</label>
+                                                                <input id="name"
+                                                                    class="form-control rounded-2 py-3" name="name"
+                                                                    type="text" placeholder="Branch Name"
+                                                                    value="{{ $branch->name }}" required>
+                                                            </div>
+                                                            <div class="mb-3 col-sm-6">
+                                                                <label for="mobile"
+                                                                    class="text-primary fs-10 fw-bold">Mobile
+                                                                </label>
+                                                                <input id="mobile"
+                                                                    class="form-control rounded-2 py-3" name="mobile"
+                                                                    type="text" placeholder="Mobile"
+                                                                    value="{{ $branch->mobile }}">
+                                                            </div>
+                                                        </div>
 
-                                            <p class="text-800">LICENCE EXPIRY <br>
-                                                08/08/2026</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                                        <button
+                                                            class="btn btn-primary px-2 px-sm-4 py-2 rounded-5 fs-8"
+                                                            type="submit">Update<span
+                                                                class="fas fa-chevron-right ms-2"
+                                                                data-fa-transform="shrink-3"></span></button>
+                                                    </form>
 
+                                                    <div class="card-footer bg-body-tertiary">
+                                                        <div class="px-sm-3 px-md-5">
+                                                            <ul class="pager wizard list-inline mb-0">
 
+                                                                <li class="next">
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
 
-                                <div class="col-lg-12 col-md-6 pt-3 pb-3">
-                                    <div class="card h-100">
-                                        <div class="card-header">
-                                            <h5 class="mb-0">Documents </h5>
-                                        </div>
-                                        <div class="card-body bg-body-tertiary">
+                                            <div class="col-lg-12 col-md-6 pt-3 pb-3">
+                                                <div class="card h-100">
 
+                                                    <div class="card-body bg-body-tertiary">
+                                                        <table
+                                                            class="table table-borderless fs-10 mb-0 text-start mb-3">
 
+                                                            @foreach ($branches as $branch)
+                                                                <tr class="border-bottom">
+                                                                    <th class="ps-0">
+                                                                        <div class="text-black fw-bold fs-9 ">
+                                                                            {{ $branch->name }}</div>
+                                                                        <div class="bold">{{ $branch->mobile }}
+                                                                        </div>
+                                                                    </th>
+                                                                    <th class="pe-0 text-end ">
+                                                                        <div class="text-success bold fs-6">
+                                                                            <div
+                                                                                class="dropdown font-sans-serif btn-reveal-trigger">
+                                                                                <a class="btn btn-falcon-default btn-sm text-600"
+                                                                                    href="{{ route('branch.edit', $branch->id) }}"><span
+                                                                                        class="fas fa-pencil-alt"></span>Edit</a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </th>
+                                                                </tr>
+                                                            @endforeach
+                                                        </table>
 
-
-
-
+                                                    </div>
+                                                </div>
+                                            </div>
 
 
                                             <!-- <section> close ============================--><!-- ============================================-->
@@ -400,10 +390,12 @@
                                                         <div class="row justify-content-between fs-10">
                                                             <div class="col-12 col-sm-auto text-center">
                                                                 <p class="mb-0 text-600 opacity-85">All Rights
-                                                                    Reserved. <span class="d-none d-sm-inline-block">|
-                                                                    </span><br class="d-sm-none"> 2024 &copy; <a
+                                                                    Reserved.
+                                                                    <span class="d-none d-sm-inline-block">| </span><br
+                                                                        class="d-sm-none"> 2024 &copy; <a
                                                                         class="text-white opacity-85"
-                                                                        href="#">Delivery Solution Portal</a></p>
+                                                                        href="#">Delivery Solution Portal</a>
+                                                                </p>
                                                             </div>
 
                                                         </div>
@@ -412,30 +404,53 @@
                                             </section>
                                         </div>
 
-
                                     </div>
-                                </div>
-                            </div>
 
-                        </div>
-                    </div>
+                                </div>
     </main>
     <!-- ===============================================--><!--    End of Main Content--><!-- ===============================================-->
 
 
-
     <!-- ===============================================--><!--    JavaScripts--><!-- ===============================================-->
-    <script src="vendors/popper/popper.min.js"></script>
-    <script src="vendors/bootstrap/bootstrap.min.js"></script>
-    <script src="vendors/anchorjs/anchor.min.js"></script>
-    <script src="vendors/is/is.min.js"></script>
-    <script src="vendors/echarts/echarts.min.js"></script>
-    <script src="vendors/prism/prism.js"></script>
-    <script src="vendors/fontawesome/all.min.js"></script>
-    <script src="vendors/lodash/lodash.min.js"></script>
-    <script src="v3/polyfill.min.js?features=window.scroll"></script>
-    <script src="vendors/list.js/list.min.js"></script>
-    <script src="assets/js/theme.js"></script>
+
+    <script>
+        // JavaScript to handle role selection and update the hidden input field
+        document.addEventListener('DOMContentLoaded', function() {
+            const typeButtons = document.querySelectorAll('.type-select');
+            const selectedTypeInput = document.getElementById('selectedType');
+
+            typeButtons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    // Remove 'active' class from all buttons
+                    typeButtons.forEach(function(btn) {
+                        btn.classList.remove('active');
+                    });
+
+                    // Add 'active' class to the clicked button
+                    this.classList.add('active');
+
+                    // Get the type ID from data-type-id attribute
+                    const typeId = this.getAttribute('data-type-id');
+
+                    // Update the value of the hidden input field
+                    selectedTypeInput.value = typeId;
+                });
+            });
+        });
+    </script>
+
+    <script src="{{ url('vendors/popper/popper.min.js') }}"></script>
+    <script src="{{ url('vendors/bootstrap/bootstrap.min.js') }}"></script>
+    <script src="{{ url('vendors/anchorjs/anchor.min.js') }}"></script>
+    <script src="{{ url('vendors/is/is.min.js') }}"></script>
+    <script src="{{ url('vendors/echarts/echarts.min.js') }}"></script>
+    <script src="{{ url('vendors/prism/prism.js') }}"></script>
+    <script src="{{ url('vendors/fontawesome/all.min.js') }}"></script>
+    <script src="{{ url('vendors/lodash/lodash.min.js') }}"></script>
+    <script src="{{ url('v3/polyfill.min.js?features=window.scroll') }}"></script>
+    <script src="{{ url('vendors/list.js/list.min.js') }}"></script>
+    <script src="{{ url('assets/js/theme.js') }}"></script>
+
 </body>
 
 </html>

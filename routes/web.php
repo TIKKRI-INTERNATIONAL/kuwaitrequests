@@ -1,5 +1,11 @@
 <?php
 
+use App\Http\Controllers\BranchController;
+use App\Http\Controllers\DriverController;
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,66 +19,74 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('login');
-});
+Route::get('/', [LoginController::class, 'index'])->name('log');
+Route::post('/login', [LoginController::class, 'login'])->name('login');
+Route::post('/register', [LoginController::class, 'register'])->name('register');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/register', function () {
     return view('register');
 });
 
-Route::get('/driver', function () {
-    return view('driver');
-});
+Route::middleware(['auth'])->group(function () {
 
-Route::get('/employee', function () {
-    return view('employee');
-});
+    Route::prefix('driver')->group(function () {
+        Route::get('/', [DriverController::class, 'index'])->name('driver');
+        Route::post('/store', [DriverController::class, 'store'])->name('driver.store');
+        Route::get('/edit/{id}', [DriverController::class, 'edit'])->name('driver.edit');
+        Route::put('/update/{id}', [DriverController::class, 'update'])->name('driver.update');
+    });
 
-Route::get('/home', function () {
-    return view('home');
-});
+    Route::prefix('employee')->group(function () {
+        Route::get('/', [EmployeeController::class, 'index'])->name('employee');
+        Route::post('/store', [EmployeeController::class, 'store'])->name('employee.store');
+        Route::get('/edit/{id}', [EmployeeController::class, 'edit'])->name('employee.edit');
+        Route::put('/update/{id}', [EmployeeController::class, 'update'])->name('employee.update');
+    });
 
-Route::get('/branch', function () {
-    return view('branch');
-});
+    Route::get('/home', function () {
+        return view('home');
+    });
 
-Route::get('/profile', function () {
-    return view('profile');
-});
+    Route::prefix('branch')->group(function () {
+        Route::get('/', [BranchController::class, 'index'])->name('branch');
+        Route::post('/store', [BranchController::class, 'store'])->name('branch.store');
+        Route::get('/edit/{id}', [BranchController::class, 'edit'])->name('branch.edit');
+        Route::put('/update/{id}', [BranchController::class, 'update'])->name('branch.update');
+    });
 
-Route::get('/subscription', function () {
-    return view('subscription');
-});
+    Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
+    Route::get('/edit-profile',  [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/update/profile',  [ProfileController::class, 'update'])->name('profile.update');
 
-Route::get('/invoice', function () {
-    return view('invoice');
-});
+    Route::prefix('order')->group(function () {
+        Route::get('/', [OrderController::class, 'index'])->name('order');
+        Route::post('/store', [OrderController::class, 'store'])->name('order.store');
+        Route::get('/edit/{id}', [OrderController::class, 'edit'])->name('order.edit');
+        Route::put('/update/{id}', [OrderController::class, 'update'])->name('order.update');
+    });
 
-Route::get('/wallet', function () {
-    return view('wallet');
-});
+    Route::get('/subscription', function () {
+        return view('subscription');
+    });
 
-Route::get('/edit-employee', function () {
-    return view('edit-employee');
-});
+    Route::get('/invoice', function () {
+        return view('invoice');
+    });
 
-Route::get('/edit-profile', function () {
-    return view('edit-profile');
-});
+    Route::get('/wallet', function () {
+        return view('wallet');
+    });
 
-Route::get('/branch-summery', function () {
-    return view('branch-summery');
-});
+    Route::get('/branch-summery', function () {
+        return view('branch-summery');
+    });
 
-Route::get('/driver-order', function () {
-    return view('driver-order');
-});
+    Route::get('/driver-order', function () {
+        return view('driver-order');
+    });
 
-Route::get('/form-page', function () {
-    return view('form-page');
-});
-
-Route::get('/order-history', function () {
-    return view('order-history');
+    Route::get('/order-history', function () {
+        return view('order-history');
+    });
 });
