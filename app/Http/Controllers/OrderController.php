@@ -36,6 +36,8 @@ class OrderController extends Controller
                 'name' => 'required|string',
                 'pays' => 'required|numeric',
                 'amount' => 'required|numeric',
+                'distance' => 'required|numeric',
+                'delivery' => 'required|numeric',
                 'type' => 'required|numeric',
                 'order_no' => 'required|string',
                 'terms' => 'accepted',
@@ -63,8 +65,11 @@ class OrderController extends Controller
                 'customers_id' => $customer->id,
                 'payment_types_id' => $validatedData['pays'],
                 'amount' => $validatedData['amount'],
+                'distance' => $validatedData['distance'],
+                'delivery' => $validatedData['delivery'],
                 'vehicle_types_id' => $validatedData['type'],
                 'order_no' => $validatedData['order_no'],
+                'status' => "Pending",
             ]);
 
             // Create a new address

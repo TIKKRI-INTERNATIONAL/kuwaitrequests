@@ -18,6 +18,9 @@ return new class extends Migration
             $table->unsignedBigInteger('vehicle_types_id');
             $table->unsignedBigInteger('payment_types_id');
             $table->double('amount');
+            $table->double('distance');
+            $table->double('delivery');
+            $table->string('status', 45);
             $table->timestamps();
         });
     }

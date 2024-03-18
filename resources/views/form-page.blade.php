@@ -32,6 +32,8 @@
     <link href="assets/css/theme.min.css" rel="stylesheet" id="style-default">
     <link href="assets/css/user-rtl.min.css" rel="stylesheet" id="user-style-rtl">
     <link href="assets/css/user.min.css" rel="stylesheet" id="user-style-default">
+    <!-- Google Maps API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
     <script>
         var isRTL = JSON.parse(localStorage.getItem('isRTL'));
         if (isRTL) {
@@ -271,7 +273,7 @@
                             @endif
 
                             <div class="card-body py-4">
-                                <form method="POST" action="{{ route('order.store') }}" >
+                                <form method="POST" action="{{ route('order.store') }}">
                                     @csrf
 
                                     <div class="tab-content">
@@ -369,133 +371,163 @@
                                                 </div>
                                             </div>
 
-                            </div>
-                            <div class="tab-pane px-sm-3 px-md-5" role="tabpanel"
-                                aria-labelledby="bootstrap-wizard-tab2" id="bootstrap-wizard-tab2">
-
-                                    <div class="row gx-2">
-                                        <div class="mb-3 col-sm-6">
-                                            <label class="form-label" for="bootstrap-wizard-gender">Area</label>
-                                            <select class="form-select rounded-2 py-3" name="area"
-                                                id="bootstrap-wizard-gender">
-                                                <option value="">Select your Area ...</option>
-                                                <option value="Salmiya">Salmiya</option>
-                                                <option value="Kuwait City">Kuwait City</option>
-                                                <option value="Hawally">Hawally</option>
-                                            </select>
                                         </div>
+                                        <div class="tab-pane px-sm-3 px-md-5" role="tabpanel"
+                                            aria-labelledby="bootstrap-wizard-tab2" id="bootstrap-wizard-tab2">
+                                            <div class="row">
+                                                <!-- Left Side: Form -->
+                                                <div class="col-md-6">
+                                                    <div class="row gx-2">
+                                                        <div class="mb-3 col-sm-6">
+                                                            <label class="form-label"
+                                                                for="bootstrap-wizard-gender">Area</label>
+                                                            <select class="form-select rounded-2 py-3" name="area"
+                                                                id="bootstrap-wizard-gender">
+                                                                <option value="">Select your Area ...</option>
+                                                                <option value="Salmiya">Salmiya</option>
+                                                                <option value="Kuwait City">Kuwait City</option>
+                                                                <option value="Hawally">Hawally</option>
+                                                            </select>
+                                                        </div>
 
-                                        <div class="mb-3 col-sm-6">
-                                            <label class="form-label" for="bootstrap-wizard-gender">Block</label>
-                                            <select class="form-select rounded-2 py-3" name="block"
-                                                id="bootstrap-wizard-gender">
-                                                <option value="">Select your Block ...</option>
-                                                <option value="Block 1">Block 1</option>
-                                                <option value="Block 2">Block 2</option>
-                                                <option value="Block 3">Block 3</option>
-                                            </select>
-                                        </div>
-                                    </div>
+                                                        <div class="mb-3 col-sm-6">
+                                                            <label class="form-label"
+                                                                for="bootstrap-wizard-gender">Block</label>
+                                                            <select class="form-select rounded-2 py-3" name="block"
+                                                                id="bootstrap-wizard-gender">
+                                                                <option value="">Select your Block ...</option>
+                                                                <option value="Block 1">Block 1</option>
+                                                                <option value="Block 2">Block 2</option>
+                                                                <option value="Block 3">Block 3</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
 
-                                    <div class="mb-3">
-                                        <label class="form-label" for="bootstrap-wizard-wizard-phone">Street</label>
-                                        <input class="form-control rounded-2 py-3" type="text" name="street"
-                                            placeholder="Street" id="bootstrap-wizard-wizard-phone">
-                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label"
+                                                            for="bootstrap-wizard-wizard-phone">Street</label>
+                                                        <input class="form-control rounded-2 py-3" type="text"
+                                                            name="street" placeholder="Street"
+                                                            id="bootstrap-wizard-wizard-phone">
+                                                    </div>
 
-                                    <div class="row gx-2">
-                                        <div class="mb-3 col-sm-6">
-                                            <label class="form-label" for="building">Building Number or
-                                                Name</label>
-                                            <input class="form-control rounded-2 py-3" type="text" name="building"
-                                                placeholder="Building Number or Name" id="building">
-                                        </div>
+                                                    <div class="row gx-2">
+                                                        <div class="mb-3 col-sm-6">
+                                                            <label class="form-label" for="building">Building Number
+                                                                or
+                                                                Name</label>
+                                                            <input class="form-control rounded-2 py-3" type="text"
+                                                                name="building" placeholder="Building Number or Name"
+                                                                id="building">
+                                                        </div>
 
-                                        <div class="mb-3 col-sm-6">
-                                            <label class="form-label" for="jedda">Jedda</label>
-                                            <input class="form-control rounded-2 py-3" type="text" name="jedda"
-                                                placeholder="Jedda" id="jedda">
-                                        </div>
+                                                        <div class="mb-3 col-sm-6">
+                                                            <label class="form-label" for="jedda">Jedda</label>
+                                                            <input class="form-control rounded-2 py-3" type="text"
+                                                                name="jedda" placeholder="Jedda" id="jedda">
+                                                        </div>
 
-                                        <div class="mb-3 col-sm-6">
-                                            <label class="form-label" for="apartment">Apartment / Office</label>
-                                            <input class="form-control rounded-2 py-3" type="text"
-                                                name="apartment" placeholder="Apartment or Office" id="apartment">
-                                        </div>
+                                                        <div class="mb-3 col-sm-6">
+                                                            <label class="form-label" for="apartment">Apartment /
+                                                                Office</label>
+                                                            <input class="form-control rounded-2 py-3" type="text"
+                                                                name="apartment" placeholder="Apartment or Office"
+                                                                id="apartment">
+                                                        </div>
 
-                                        <div class="mb-3 col-sm-6">
-                                            <label class="form-label" for="floor">Floor</label>
-                                            <input class="form-control rounded-2 py-3" type="text" name="floor"
-                                                placeholder="Floor" id="floor">
-                                        </div>
+                                                        <div class="mb-3 col-sm-6">
+                                                            <label class="form-label" for="floor">Floor</label>
+                                                            <input class="form-control rounded-2 py-3" type="text"
+                                                                name="floor" placeholder="Floor" id="floor">
+                                                        </div>
 
-                                        <div class="mb-3">
-                                            <label class="form-label"
-                                                for="bootstrap-wizard-wizard-datepicker">Notes</label>
-                                            <input class="form-control rounded-2 py-3 datetimepicker" type="text"
-                                                name="notes" placeholder="Note / Instruction"
-                                                id="bootstrap-wizard-wizard-datepicker">
-                                        </div>
+                                                        <div class="mb-3 col-sm-6">
+                                                            <label class="form-label" for="distance">Distance </label>
+                                                            <input class="form-control rounded-2 py-3" type="text"
+                                                                name="distance" placeholder="Distance"
+                                                                id="distance">
+                                                        </div>
 
-                                        <!-- Second form fields -->
-                                        <div class="card-footer bg-body-tertiary">
-                                            <div class="px-sm-3 px-md-5">
-                                                <ul class="pager wizard list-inline mb-0">
-                                                    <li class="previous">
-                                                        <button class="btn btn-link ps-0" type="button">
-                                                            <span class="fas fa-chevron-left me-2"
-                                                                data-fa-transform="shrink-3"></span>Prev
-                                                        </button>
-                                                    </li>
-                                                    <li class="next">
-                                                        <button
-                                                            class="btn btn-primary px-2 px-sm-4 py-2 rounded-5 fs-8"
-                                                            type="submit">Next Step
-                                                            <span class="fas fa-chevron-right ms-2"
-                                                                data-fa-transform="shrink-3"></span>
-                                                        </button>
-                                                    </li>
-                                                </ul>
+                                                        <div class="mb-3 col-sm-6">
+                                                            <label class="form-label" for="delivery">Delivery Charges</label>
+                                                            <input class="form-control rounded-2 py-3" type="text"
+                                                                name="delivery" placeholder="Delivery Charges" id="delivery">
+                                                        </div>
+
+                                                        <div class="mb-3">
+                                                            <label class="form-label"
+                                                                for="bootstrap-wizard-wizard-datepicker">Notes</label>
+                                                            <input class="form-control rounded-2 py-3 datetimepicker"
+                                                                type="text" name="notes"
+                                                                placeholder="Note / Instruction"
+                                                                id="bootstrap-wizard-wizard-datepicker">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Right Side: Google Maps -->
+                                                <div class="col-md-6">
+                                                    <div id="map" style="height: 600px;"></div>
+                                                </div>
+                                            </div>
+                                            <!-- Second form fields -->
+                                            <div class="card-footer bg-body-tertiary">
+                                                <div class="px-sm-3 px-md-5">
+                                                    <ul class="pager wizard list-inline mb-0">
+                                                        <li class="previous">
+                                                            <button class="btn btn-link ps-0" type="button">
+                                                                <span class="fas fa-chevron-left me-2"
+                                                                    data-fa-transform="shrink-3"></span>Prev
+                                                            </button>
+                                                        </li>
+                                                        <li class="next">
+                                                            <button
+                                                                class="btn btn-primary px-2 px-sm-4 py-2 rounded-5 fs-8"
+                                                                type="submit">Next Step
+                                                                <span class="fas fa-chevron-right ms-2"
+                                                                    data-fa-transform="shrink-3"></span>
+                                                            </button>
+                                                        </li>
+                                                    </ul>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="tab-pane text-center px-sm-3 px-md-5" role="tabpanel"
-                                        aria-labelledby="bootstrap-wizard-tab4" id="bootstrap-wizard-tab4">
-                                        <h4 class="mb-1">Your all data correct ?</h4>
-                                        <p>Now you can create order</p><a class="btn btn-primary px-5 my-3"
-                                            href="#">Create Order</a>
-                                    </div>
+                                        <div class="tab-pane text-center px-sm-3 px-md-5" role="tabpanel"
+                                            aria-labelledby="bootstrap-wizard-tab4" id="bootstrap-wizard-tab4">
+                                            <h4 class="mb-1">Your all data correct ?</h4>
+                                            <p>Now you can create order</p><a class="btn btn-primary px-5 my-3"
+                                                href="#">Create Order</a>
+                                        </div>
 
+                                    </div>
+                                </form>
                             </div>
-                            </form>
-                        </div>
 
+                        </div>
                     </div>
+
+
+                    <!-- <section> close ============================--><!-- ============================================-->
+
+                    <section class="py-0 bg-dark bottom-bar" data-bs-theme="light">
+                        <div>
+                            <hr class="my-0 text-600 opacity-25">
+                            <div class="container py-3">
+                                <div class="row justify-content-between fs-10">
+                                    <div class="col-12 col-sm-auto text-center">
+                                        <p class="mb-0 text-600 opacity-85">All Rights Reserved. <span
+                                                class="d-none d-sm-inline-block">| </span><br class="d-sm-none">
+                                            2024 &copy; <a class="text-white opacity-85" href="#">Delivery
+                                                Solution Portal</a></p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div><!-- end of .container-->
+                    </section>
                 </div>
 
 
-                <!-- <section> close ============================--><!-- ============================================-->
-
-                <section class="py-0 bg-dark bottom-bar" data-bs-theme="light">
-                    <div>
-                        <hr class="my-0 text-600 opacity-25">
-                        <div class="container py-3">
-                            <div class="row justify-content-between fs-10">
-                                <div class="col-12 col-sm-auto text-center">
-                                    <p class="mb-0 text-600 opacity-85">All Rights Reserved. <span
-                                            class="d-none d-sm-inline-block">| </span><br class="d-sm-none">
-                                        2024 &copy; <a class="text-white opacity-85" href="#">Delivery
-                                            Solution Portal</a></p>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div><!-- end of .container-->
-                </section>
             </div>
-
-
-        </div>
 
         </div>
     </main>
@@ -504,7 +536,6 @@
 
     <!-- ===============================================--><!--    JavaScripts--><!-- ===============================================-->
     <script>
-
         // JavaScript to handle role selection and update the hidden input field
         document.addEventListener('DOMContentLoaded', function() {
             const payButtons = document.querySelectorAll('.pay-select');
@@ -518,7 +549,26 @@
             });
         });
     </script>
+    <!-- Bootstrap Bundle with Popper -->
 
+    <script>
+        function initMap() {
+            var kuwait = {
+                lat: 29.3759,
+                lng: 47.9774
+            };
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 10,
+                center: kuwait
+            });
+            var marker = new google.maps.Marker({
+                position: kuwait,
+                map: map,
+                title: 'Kuwait'
+            });
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
     <script src="vendors/popper/popper.min.js"></script>
     <script src="vendors/bootstrap/bootstrap.min.js"></script>
     <script src="vendors/anchorjs/anchor.min.js"></script>
