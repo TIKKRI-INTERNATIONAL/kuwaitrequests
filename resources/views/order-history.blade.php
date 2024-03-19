@@ -218,62 +218,97 @@
                             </div>
                         </div>
                     </section>
+                    <div class="col-lg-6 col-xl-12 col-xxl-8 h-100 pt-5">
+                        <div class="d-flex mb-4"><span class="fa-stack me-2 ms-n1"><i
+                                    class="fas fa-circle fa-stack-2x text-300"></i><i
+                                    class="fa-inverse fa-stack-1x text-primary fas fa-spinner"></i></span>
+                            <div class="col">
+                                <h5 class="mb-0 text-primary position-relative"><span
+                                        class="bg-200 dark__bg-1100 pe-3"> Order History</span><span
+                                        class="border position-absolute top-50 translate-middle-y w-100 start-0 z-n1"></span>
+                                </h5>
 
-                    <!--<div class="col-xxl-12 col-md-12 pt-3">
-              <div class="card shopping-cart-bar-min-height h-100">
-                <div class="card-header d-flex flex-between-center">
-                  <h3 class="mb-0 text-primary fw-bold">Wallet</h3>
-                  <div class="dropdown font-sans-serif btn-reveal-trigger">
-                    <a class="btn btn-falcon-default btn-sm text-600" href="wallet"><span class="fas fa-pencil-alt"></span></a>
-                  </div>
-                </div>
-
-              </div>
-            </div>-->
-
-
-
-
-
-                    <!--<div class=" mx-auto row flex-center pt-4 px-0">
-                <div class="col-sm-10 col-md-8 col-lg-6 col-xl-12">
-                  <div class="card rounded-2">
-
-
-
-                    <div class="card-body p-4 p-sm-5">
-                      <h5 class="text-center pb-3 text-primary fw-bold fs-6">Customer Information</h5>
-                      <form>
-                        <div class="row gx-2">
-                            <div class="mb-3 col-sm-6">
-                                <label for="Customer Name" class="text-primary fs-10 fw-bold">Customer Name</label>
-                                <input class="form-control rounded-2 py-3" type="name" placeholder="Email address"></div>
-                            <div class="mb-3 col-sm-6">
-                                <label for="Customer Phone" class="text-primary fs-10 fw-bold">Customer Phone</label>
-                                <input class="form-control rounded-2 py-3" type="phone" placeholder="Customer Phone"></div>
-                          </div>
-                        <div class="mb-3">
-                          <label for="Email address" class="text-primary fs-10 fw-bold">Email Address</label>
-                          <input class="form-control rounded-2" type="email" placeholder="Email address"></div>
-                        <div class="mb-3">
-                          <label for="Order Number" class="text-primary fs-10 fw-bold">Order Number/ Details</label>
-                          <input class="form-control rounded-2 py-3" type="number" placeholder="Order Number"></div>
-                        <div class="row flex-between-center">
-                          <div class="col-auto">
-                            <div class="form-check mb-0"><input class="form-check-input" type="checkbox" id="basic-checkbox" checked="checked"><label class="form-check-label mb-0" for="basic-checkbox">Remember me</label></div>
-                          </div>
-                          <div class="col-auto"><a class="fs-9 text-primary fw-semi-bold" href="forgot-password.html">Forgot Your Password?</a></div>
+                            </div>
                         </div>
-                        <div class="mb-3"><button class="btn btn-primary d-block py-3 px-5 mt-3 rounded-5 fs-8" type="submit" name="submit">Next Step: Customer address</button></div>
-                       </form>
                     </div>
+                    <div class="col-lg-12 col-md-6 pt-3 pb-3">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <ul class="list-group">
+                                    @foreach ($orders as $order)
+                                        <li class="list-group-item">
+                                            <div class="list-group">
+                                                <div class="list-group-item">
+                                                    <div class="row">
+                                                        <div class="col-md-3">
+                                                            <strong>Code:</strong> {{ $order->order_no }}
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <strong>Customer:</strong> {{ $order->customer->name }}
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <strong>External Number :</strong>
+                                                            -
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <strong>Amount :</strong> {{ $order->amount }}
+                                                            KWD ({{ $order->status }})
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-3">
+                                                            <strong>Area:</strong>
+                                                            {{ $order->customer->address ? $order->customer->address->area : '-' }}
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <strong>Distance:</strong> {{ $order->distance }}
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <strong>Rank in trip:</strong>
+                                                            {{ $order->rank_in_trip ?? '-' }}
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <strong>Delivery time:</strong>
+                                                            {{ $order->delivery_time ?? '-' }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-3">
+                                                            <strong>Delivery fee:</strong> {{ $order->delivery }}
+                                                            KWD
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <strong>Penalty fee:</strong>
+                                                            {{ $order->penalty_fee ?? '-' }}
+                                                            KWD
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <strong>Extra Notes:</strong>
+                                                            {{ $order->customer->address ? $order->customer->address->notes : '-' }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-3">
+                                                            <strong>Driver:</strong> {{ $order->driver_name ?? '-' }}
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <strong>Picked Up At:</strong>
+                                                            {{ $order->created_at->format('Y-m-d H:m') }}
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <strong>Completed At:</strong>
+                                                            {{ $order->status == 'Completed' ? $order->updated_at->format('Y-m-d H:m') : '-' }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    @endforeach
+                                </ul>
 
-
-                  </div>
-                </div>
-              </div>-->
-
-
+                            </div>
+                        </div>
+                    </div>
 
 
                     <!-- <section> close ============================--><!-- ============================================-->
