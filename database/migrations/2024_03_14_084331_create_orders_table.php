@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->string('order_no');
+            $table->unsignedBigInteger('users_id');
             $table->unsignedBigInteger('customers_id');
             $table->unsignedBigInteger('vehicle_types_id');
             $table->unsignedBigInteger('payment_types_id');

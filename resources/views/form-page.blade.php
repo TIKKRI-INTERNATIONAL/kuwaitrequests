@@ -448,9 +448,11 @@
                                                         </div>
 
                                                         <div class="mb-3 col-sm-6">
-                                                            <label class="form-label" for="delivery">Delivery Charges</label>
+                                                            <label class="form-label" for="delivery">Delivery
+                                                                Charges</label>
                                                             <input class="form-control rounded-2 py-3" type="text"
-                                                                name="delivery" placeholder="Delivery Charges" id="delivery">
+                                                                name="delivery" placeholder="Delivery Charges"
+                                                                id="delivery">
                                                         </div>
 
                                                         <div class="mb-3">
@@ -492,43 +494,9 @@
                                         </div>
                                     </div>
                                 </form>
-                                <div class="col-lg-12 col-md-6 pt-3 pb-3">
-                                    <div class="card">
-                                        <div class="card-body bg-body-tertiary">
-                                            <table class="table table-borderless fs-10 mb-0 text-start mb-3">
-                                                @foreach ($orders as $order)
-                                                    <tr class="border-bottom">
-                                                        <th class="ps-0">
-                                                            <div class="text-black fw-bold fs-9">
-                                                                {{ $order->order_no }}</div>
-                                                            <div class="bold">{{ $order->amount }} KWD
-                                                            </div>
-                                                            <div class="text-800 fw-normal fs-11">
-                                                                {{ $order->status }}
-                                                            </div>
-                                                        </th>
-                                                        <th class="pe-0 text-end ">
-                                                            <div class="text-success bold fs-6">
-                                                                <div
-                                                                    class="dropdown font-sans-serif btn-reveal-trigger">
-                                                                    <a class="btn btn-falcon-default btn-sm text-600"
-                                                                        href="{{ url('order-history') }}"><span
-                                                                            class="fas fa-eye"></span> View</a>
-                                                                </div>
-                                                            </div>
-                                                        </th>
-                                                    </tr>
-                                                @endforeach
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
-
                         </div>
                     </div>
-
-
 
                     <!-- <section> close ============================--><!-- ============================================-->
 
@@ -571,13 +539,13 @@
                     selectedPayInput.value = payId;
                 });
             });
-            
+
             // Get all 'previous' buttons
             var previousButtons = document.querySelectorAll('.previous');
 
             // Add click event listener to each 'previous' button
-            previousButtons.forEach(function (button) {
-                button.addEventListener('click', function () {
+            previousButtons.forEach(function(button) {
+                button.addEventListener('click', function() {
                     // Find the parent tab-pane element and get its ID
                     var currentTabPane = button.closest('.tab-pane');
                     var currentTabPaneId = currentTabPane.id;
@@ -589,7 +557,8 @@
                     if (currentTabPaneId !== 'bootstrap-wizard-tab1') {
                         // Find the previous tab-pane's ID dynamically
                         var currentTabPaneIndex = currentTabPaneId.split('bootstrap-wizard-tab')[1];
-                        previousTabPaneId = 'bootstrap-wizard-tab' + (parseInt(currentTabPaneIndex) - 1);
+                        previousTabPaneId = 'bootstrap-wizard-tab' + (parseInt(
+                            currentTabPaneIndex) - 1);
                     }
 
                     // Activate the previous tab-pane
