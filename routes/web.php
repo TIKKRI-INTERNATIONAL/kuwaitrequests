@@ -65,6 +65,8 @@ Route::middleware(['auth'])->group(function () {
         Route::put('/update/{id}', [OrderController::class, 'update'])->name('order.update');
     });
 
+    Route::get('/order-history', [OrderController::class, 'history'])->name('order-history');
+
     Route::get('/subscription', function () {
         return view('subscription');
     });
@@ -85,7 +87,4 @@ Route::middleware(['auth'])->group(function () {
         return view('driver-order');
     });
 
-    Route::get('/order-history', function () {
-        return view('order-history');
-    });
 });

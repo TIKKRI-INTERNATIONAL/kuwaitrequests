@@ -102,6 +102,13 @@ class OrderController extends Controller
         }
     }
 
+
+    public function history()
+    {
+        $orders = Order::all();
+        return view('order-history', compact(['orders']));
+    }
+
     /**
      * Show the form for editing the specified resource.
      */

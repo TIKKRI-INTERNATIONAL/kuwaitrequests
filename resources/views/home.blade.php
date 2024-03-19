@@ -413,7 +413,7 @@
                                                             <tr class="border-bottom">
                                                                 <th class="ps-0 pt-0">
                                                                     <div class="text-400 fw-normal fs-11">
-                                                                        {{ $pending->created_at->format('Y-m-d HH::mm') }}
+                                                                        {{ $pending->created_at->format('Y-m-d H::m') }}
                                                                     </div>
                                                                     <div class="bold">{{ $pending->customer->name }}
                                                                     </div>
@@ -494,7 +494,7 @@
                                                             <tr class="border-bottom">
                                                                 <th class="ps-0 pt-0">
                                                                     <div class="text-400 fw-normal fs-11">
-                                                                        {{ $delivery->created_at->format('Y-m-d HH::mm') }}
+                                                                        {{ $delivery->created_at->format('Y-m-d H::m') }}
                                                                     </div>
                                                                     <div class="bold">
                                                                         {{ $delivery->customer->name }}
@@ -576,7 +576,7 @@
                                                             <tr class="border-bottom">
                                                                 <th class="ps-0 pt-0">
                                                                     <div class="text-400 fw-normal fs-11">
-                                                                        {{ $complete->created_at->format('Y-m-d HH::mm') }}
+                                                                        {{ $complete->created_at->format('Y-m-d H::m') }}
                                                                     </div>
                                                                     <div class="bold">
                                                                         {{ $complete->customer->name }}
@@ -657,7 +657,7 @@
                                                             <tr class="border-bottom">
                                                                 <th class="ps-0 pt-0">
                                                                     <div class="text-400 fw-normal fs-11">
-                                                                        {{ $cancel->created_at->format('Y-m-d HH::mm') }}
+                                                                        {{ $cancel->created_at->format('Y-m-d H::m') }}
                                                                     </div>
                                                                     <div class="bold">{{ $cancel->customer->name }}
                                                                     </div>
