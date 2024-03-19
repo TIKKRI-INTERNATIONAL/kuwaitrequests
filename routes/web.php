@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BranchController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DriverController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\LoginController;
@@ -44,9 +45,7 @@ Route::middleware(['auth'])->group(function () {
         Route::put('/update/{id}', [EmployeeController::class, 'update'])->name('employee.update');
     });
 
-    Route::get('/home', function () {
-        return view('home');
-    });
+    Route::get('/home',[ DashboardController::class, 'index'])->name('home');
 
     Route::prefix('branch')->group(function () {
         Route::get('/', [BranchController::class, 'index'])->name('branch');

@@ -9,6 +9,7 @@ use App\Models\Customer;
 use App\Models\PaymentType;
 use App\Models\VehicleType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Throwable;
 
@@ -21,8 +22,7 @@ class OrderController extends Controller
     {
         $pays = PaymentType::all();
         $types = VehicleType::all();
-        $orders = Order::all();
-        return view('form-page', compact(['pays', 'types', 'orders']));
+        return view('form-page', compact(['pays', 'types']));
     }
 
     /**
@@ -63,6 +63,7 @@ class OrderController extends Controller
 
             // Create a new order
             Order::create([
+                'users_id' => Auth::user()->id,
                 'customers_id' => $customer->id,
                 'payment_types_id' => $validatedData['pays'],
                 'amount' => $validatedData['amount'],
@@ -99,14 +100,6 @@ class OrderController extends Controller
             // Log the exception or handle it accordingly
             return redirect()->back()->with('error', $th->getMessage());
         }
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function storeAddress(Request $request)
-    {
-        dd($request);
     }
 
     /**
