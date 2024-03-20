@@ -27,18 +27,10 @@ class LoginController extends Controller
             $credentials = $request->only('email', 'password');
 
             if (!Auth::attempt($credentials)) {
-                // Check if the email doesn't match and the role ID is 5
-                $user = User::where('name', $request->input('email'))->first();
-
-                if ($user && $user->roles_id == 5 && Hash::check($request->input('password'), $user->password)) {
-                    // Log in the user
-                    Auth::login($user);
-                } else {
                     // Invalid email, name, or password
                     throw ValidationException::withMessages([
-                        'email' => ['Invalid email, name, or password'],
+                        'email' => ['Invalid email or password'],
                     ]);
-                }
             }
             // Authentication passed, commit transaction
             DB::commit();
@@ -50,7 +42,41 @@ class LoginController extends Controller
             DB::rollBack();
 
             // Handle the exception
-            return redirect()->back()->withInput()->withErrors(['email' => $e->getMessage()]);
+            return redirect()->back()->withInput()->withErrors(['error' => $e->getMessage()]);
+        }
+    }
+
+    public function loginDriver()
+    {
+        return view('login-driver');
+    }
+
+    public function loginDriverStore(Request $request)
+    {
+        try {
+            // Begin transaction
+            DB::beginTransaction();
+
+            // Attempt to authenticate
+            $credentials = $request->only('name', 'password');
+
+            if (!Auth::attempt($credentials)) {
+                    // Invalid email, name, or password
+                    throw ValidationException::withMessages([
+                        'name' => ['Invalid name or password'],
+                    ]);
+            }
+            // Authentication passed, commit transaction
+            DB::commit();
+
+            // Redirect authenticated user
+            return redirect()->intended('/home');
+        } catch (\Exception $e) {
+            // Something went wrong, rollback transaction
+            DB::rollBack();
+
+            // Handle the exception
+            return redirect()->back()->withInput()->withErrors(['error' => $e->getMessage()]);
         }
     }
 

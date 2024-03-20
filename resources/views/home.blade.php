@@ -408,10 +408,12 @@
                                                             <tr>
                                                                 <th class="ps-0 pb-0">
                                                                     <div class="text-400 fw-normal fs-11">
+                                                                        @if (Auth::user()->roles_id == 5)
                                                                         <form action="{{ route('assign.driver', ['orderId' => $pending->id]) }}" method="POST">
                                                                             @csrf
                                                                             <button type="submit" class="btn btn-primary">Assign</button>
                                                                         </form>
+                                                                        @endif
                                                                     </div>
                                                                 </th>
                                                                 <th class="pe-0 text-end pb-0">
@@ -494,7 +496,7 @@
                                                             <tr>
                                                                 <th class="ps-0 pb-0">
                                                                     <div class="text-400 fw-normal fs-11">
-                                                                       Driver - {{ $delivery->driverOrder->driver->name }}
+                                                                       Driver - {{  $delivery->driverOrder ? $delivery->driverOrder->driver->name : '-' }}
                                                                     </div>
                                                                 </th>
                                                                 <th class="pe-0 text-end pb-0">

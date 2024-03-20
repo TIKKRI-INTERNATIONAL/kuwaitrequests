@@ -23,6 +23,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LoginController::class, 'index'])->name('log');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
+Route::get('/driver/login', [LoginController::class, 'loginDriver'])->name('driver.login');
+Route::post('/driver/login/store', [LoginController::class, 'loginDriverStore'])->name('driver.login.store');
 Route::post('/register', [LoginController::class, 'register'])->name('register');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 

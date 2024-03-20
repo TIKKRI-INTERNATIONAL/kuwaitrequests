@@ -24,10 +24,10 @@
     <link href="../../css?family=Open+Sans:300,400,500,600,700%7cPoppins:300,400,500,600,700,800,900&amp;display=swap"
         rel="stylesheet">
     <link href="vendors/simplebar/simplebar.min.css" rel="stylesheet">
-    <link href="assets/css/theme-rtl.min.css" rel="stylesheet" id="style-rtl">
-    <link href="assets/css/theme.min.css" rel="stylesheet" id="style-default">
-    <link href="assets/css/user-rtl.min.css" rel="stylesheet" id="user-style-rtl">
-    <link href="assets/css/user.min.css" rel="stylesheet" id="user-style-default">
+    <link href="{{ url('assets/css/theme-rtl.min.css') }}" rel="stylesheet" id="style-rtl">
+    <link href="{{ url('assets/css/theme.min.css') }}" rel="stylesheet" id="style-default">
+    <link href="{{ url('assets/css/user-rtl.min.css') }}" rel="stylesheet" id="user-style-rtl">
+    <link href="{{ url('assets/css/user.min.css') }}" rel="stylesheet" id="user-style-default">
     <script>
         var isRTL = JSON.parse(localStorage.getItem('isRTL'));
         if (isRTL) {
@@ -98,12 +98,12 @@
                                     </ul>
                                 </div>
                             @endif
-                            <form method="POST" action="{{ route('login') }}">
+                            <form method="POST" action="{{ route('driver.login.store') }}">
                                 @csrf
                                 <div class="mb-3">
-                                    <label for="Email address" class="text-primary fs-10 fw-bold">Email Address</label>
-                                    <input class="form-control" type="email" placeholder="Email address"
-                                        name="email" autocomplete="username" required>
+                                    <label for="Name" class="text-primary fs-10 fw-bold"> Name</label>
+                                    <input class="form-control" type="text" placeholder="Name" name="name"
+                                        autocomplete="username" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="Password" class="text-primary fs-10 fw-bold">Password</label>
@@ -125,9 +125,6 @@
                                         type="submit">SIGN IN</button>
 
                                 </div>
-                                <div class="mb-3"><a href="register"
-                                        class="btn btn-primary d-block w-100 mt-3 rounded-5 fs-8" type="button">Create
-                                        New Account?</a></div>
                             </form>
                         </div>
                     </div>
@@ -138,15 +135,15 @@
 
 
     <!-- ===============================================--><!--    JavaScripts--><!-- ===============================================-->
-    <script src=" vendors/popper/popper.min.js"></script>
-    <script src=" vendors/bootstrap/bootstrap.min.js"></script>
-    <script src=" vendors/anchorjs/anchor.min.js"></script>
-    <script src=" vendors/is/is.min.js"></script>
-    <script src=" vendors/fontawesome/all.min.js"></script>
-    <script src=" vendors/lodash/lodash.min.js"></script>
+    <script src="{{ url('vendors/popper/popper.min.js') }}"></script>
+    <script src="{{ url('vendors/bootstrap/bootstrap.min.js') }}"></script>
+    <script src=" {{ url('vendors/anchorjs/anchor.min.js') }}"></script>
+    <script src="{{ url('vendors/is/is.min.js') }}"></script>
+    <script src=" {{ url('vendors/fontawesome/all.min.js') }}"></script>
+    <script src=" {{ url('vendors/lodash/lodash.min.js') }}"></script>
     <script src=" ../../v3/polyfill.min.js?features=window.scroll"></script>
-    <script src=" vendors/list.js/list.min.js"></script>
-    <script src=" assets/js/theme.js"></script>
+    <script src="{{ url('vendors/list.js/list.min.js') }}"></script>
+    <script src="{{ url('assets/js/theme.js') }}"></script>
 </body>
 
 </html>

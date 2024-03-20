@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\DriverOrder;
 use App\Http\Controllers\Controller;
+use App\Models\Driver;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -33,13 +34,15 @@ class DriverOrderController extends Controller
     public function store($orderId)
     {
         try {
-            $driverId = auth()->user()->id;
+            $userId = auth()->user()->id;
+            $driverId =  Driver::where('users_id', $userId)->first();
+         
             // Start a database transaction
             DB::beginTransaction();
             // Save the assignment details to driver_orders table
             DriverOrder::create([
                 'orders_id' => $orderId,
-                'drivers_id' => $driverId,
+                'drivers_id' => $driverId->id,
                 'status' => 'Assign'
             ]);
 
