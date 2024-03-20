@@ -86,7 +86,7 @@
 
                         <div class="card-body p-4 p-sm-5">
                             <a class="d-flex flex-center mb-1" href="#"><img class="me-2"
-                                    src=" assets/img/icons/spot-illustrations/logo.png" alt=""
+                                    src="{{ url('assets/img/icons/spot-illustrations/logo.png') }}" alt=""
                                     width="100"></a>
                             <h5 class="text-center pb-3 text-primary fw-bold fs-6">Delivery Solution Portal</h5>
                             @if ($errors->any())

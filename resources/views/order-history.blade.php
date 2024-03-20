@@ -291,7 +291,7 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-md-3">
-                                                            <strong>Driver:</strong> {{ $order->driver_name ?? '-' }}
+                                                            <strong>Driver:</strong> {{ $order->driverOrder ? $order->driverOrder->driver->name : '-' }}
                                                         </div>
                                                         <div class="col-md-3">
                                                             <strong>Picked Up At:</strong>
