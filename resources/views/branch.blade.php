@@ -98,17 +98,24 @@
                                                 class="fas fa-flag"></span></span><span
                                             class="nav-link-text ps-1">Dashboard</span></div>
                                 </a>
-                                <a class="nav-link" href="order-history" role="button">
-                                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span
-                                                class="fas fa-flag"></span></span><span class="nav-link-text ps-1">Order
-                                            History</span></div>
-                                </a>
-                                <a class="nav-link" href="branch-summery" role="button">
-                                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span
-                                                class="fas fa-flag"></span></span><span
-                                            class="nav-link-text ps-1">Branches Summary</span></div>
-                                </a>
-
+                                @if (Auth::user()->roles_id != 5)
+                                    <a class="nav-link" href="order-history" role="button">
+                                        <div class="d-flex align-items-center"><span class="nav-link-icon"><span
+                                                    class="fas fa-flag"></span></span><span
+                                                class="nav-link-text ps-1">Order
+                                                History</span></div>
+                                    </a>
+                                    <a class="nav-link" href="branch-summery" role="button">
+                                        <div class="d-flex align-items-center"><span class="nav-link-icon"><span
+                                                    class="fas fa-flag"></span></span><span
+                                                class="nav-link-text ps-1">Branches Summary</span></div>
+                                    </a>
+                                    <a class="nav-link" href="setting" role="button">
+                                        <div class="d-flex align-items-center"><span class="nav-link-icon"><span
+                                                    class="fas fa-flag"></span></span><span
+                                                class="nav-link-text ps-1">Setting</span></div>
+                                    </a>
+                                @endif
 
                             <li class="nav-item"><!-- label-->
                                 <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
@@ -301,17 +308,21 @@
                                                             <div class="mb-3 col-sm-6">
                                                                 <label for="Mobile"
                                                                     class="text-primary fs-10 fw-bold">MOBILE</label>
-                                                                <input class="form-control rounded-2 py-3" name="mobile"
-                                                                    type="text" placeholder="MOBILE">
+                                                                <input class="form-control rounded-2 py-3"
+                                                                    name="mobile" type="text"
+                                                                    placeholder="MOBILE">
                                                             </div>
                                                         </div>
                                                         <div class="row gx-2">
                                                             <div class="mb-3 col-sm-6">
                                                                 <label for="Customer Phone"
                                                                     class="text-primary fs-10 fw-bold"> Address</label>
-                                                                <button class="btn btn-primary d-block w-100"
-                                                                    type="button">Address</button>
+                                                                <button type="button"
+                                                                    class="btn btn-primary d-block w-100"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#addressModal"> Address</button>
                                                             </div>
+                                                            @include('address-modal')
                                                         </div>
                                                         <button
                                                             class="btn btn-primary px-2 px-sm-4 py-2 rounded-5 fs-8"
@@ -342,22 +353,23 @@
 
                                                     <table class="table table-borderless fs-10 mb-0 text-start mb-3">
                                                         @foreach ($branches as $branch)
-                                                        <tr class="border-bottom">
-                                                            <th class="ps-0">
-                                                                <div class="text-black fw-bold fs-9 ">{{ $branch->name }}</div>
-                                                                <div class="bold">{{ $branch->mobile }}</div>
-                                                            </th>
-                                                            <th class="pe-0 text-end ">
-                                                                <div class="text-success bold fs-6">
-                                                                    <div
-                                                                        class="dropdown font-sans-serif btn-reveal-trigger">
-                                                                        <a class="btn btn-falcon-default btn-sm text-600"
-                                                                            href="{{ route('branch.edit', $branch->id) }}"><span
-                                                                                class="fas fa-pencil-alt"></span>Edit</a>
+                                                            <tr class="border-bottom">
+                                                                <th class="ps-0">
+                                                                    <div class="text-black fw-bold fs-9 ">
+                                                                        {{ $branch->name }}</div>
+                                                                    <div class="bold">{{ $branch->mobile }}</div>
+                                                                </th>
+                                                                <th class="pe-0 text-end ">
+                                                                    <div class="text-success bold fs-6">
+                                                                        <div
+                                                                            class="dropdown font-sans-serif btn-reveal-trigger">
+                                                                            <a class="btn btn-falcon-default btn-sm text-600"
+                                                                                href="{{ route('branch.edit', $branch->id) }}"><span
+                                                                                    class="fas fa-pencil-alt"></span>Edit</a>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
-                                                            </th>
-                                                        </tr>
+                                                                </th>
+                                                            </tr>
                                                         @endforeach
                                                     </table>
 

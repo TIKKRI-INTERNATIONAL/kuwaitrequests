@@ -89,12 +89,20 @@
                                     src=" assets/img/icons/spot-illustrations/logo.png" alt=""
                                     width="100"></a>
                             <h5 class="text-center pb-3 text-primary fw-bold fs-6">Delivery Solution Portal</h5>
-
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf
                                 <div class="mb-3">
                                     <label for="Email address" class="text-primary fs-10 fw-bold">Email Address</label>
-                                    <input class="form-control" type="email" placeholder="Email address"
+                                    <input class="form-control" type="text" placeholder="Email address"
                                         name="email" autocomplete="username" required>
                                 </div>
                                 <div class="mb-3">
@@ -113,8 +121,8 @@
                                             href="forgot-password.html">Forgot Your Password?</a></div>
                                 </div>
                                 <div class="mb-3">
-                                    <button class="btn btn-primary d-block w-100 mt-3 rounded-5 fs-8" type="submit"
-                                       >SIGN IN</button>
+                                    <button class="btn btn-primary d-block w-100 mt-3 rounded-5 fs-8"
+                                        type="submit">SIGN IN</button>
 
                                 </div>
                                 <div class="mb-3"><a href="register"

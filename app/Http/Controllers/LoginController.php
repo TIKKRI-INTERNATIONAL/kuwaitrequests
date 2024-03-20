@@ -27,11 +27,19 @@ class LoginController extends Controller
             $credentials = $request->only('email', 'password');
 
             if (!Auth::attempt($credentials)) {
-                throw ValidationException::withMessages([
-                    'email' => ['Invalid email or password'],
-                ]);
-            }
+                // Check if the email doesn't match and the role ID is 5
+                $user = User::where('name', $request->input('email'))->first();
 
+                if ($user && $user->roles_id == 5 && Hash::check($request->input('password'), $user->password)) {
+                    // Log in the user
+                    Auth::login($user);
+                } else {
+                    // Invalid email, name, or password
+                    throw ValidationException::withMessages([
+                        'email' => ['Invalid email, name, or password'],
+                    ]);
+                }
+            }
             // Authentication passed, commit transaction
             DB::commit();
 
@@ -57,7 +65,7 @@ class LoginController extends Controller
                 'name' => 'required|string|max:255',
                 'email' => 'required|string|email|max:255|unique:users',
                 'password' => 'required|string|confirmed|min:8',
-                'terms' => 'required|accepted', // Assuming a terms acceptance checkbox
+                'terms' => 'required|accepted',
             ]);
 
             // Create the user
@@ -73,7 +81,7 @@ class LoginController extends Controller
             DB::commit();
 
             // authenticate the user after registration
-             auth()->login($user);
+            auth()->login($user);
 
             // Redirect the user after registration
             return redirect('/home');

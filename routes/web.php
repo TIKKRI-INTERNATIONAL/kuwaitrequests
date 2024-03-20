@@ -3,6 +3,7 @@
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DriverController;
+use App\Http\Controllers\DriverOrderController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OrderController;
@@ -31,14 +32,14 @@ Route::get('/register', function () {
 
 Route::middleware(['auth'])->group(function () {
 
-    Route::prefix('driver')->group(function () {
+    Route::prefix('driver')->middleware('role:5')->group(function () {
         Route::get('/', [DriverController::class, 'index'])->name('driver');
         Route::post('/store', [DriverController::class, 'store'])->name('driver.store');
         Route::get('/edit/{id}', [DriverController::class, 'edit'])->name('driver.edit');
         Route::put('/update/{id}', [DriverController::class, 'update'])->name('driver.update');
     });
 
-    Route::prefix('employee')->group(function () {
+    Route::prefix('employee')->middleware('role:5')->group(function () {
         Route::get('/', [EmployeeController::class, 'index'])->name('employee');
         Route::post('/store', [EmployeeController::class, 'store'])->name('employee.store');
         Route::get('/edit/{id}', [EmployeeController::class, 'edit'])->name('employee.edit');
@@ -47,16 +48,16 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/home',[ DashboardController::class, 'index'])->name('home');
 
-    Route::prefix('branch')->group(function () {
+    Route::prefix('branch')->middleware('role:5')->group(function () {
         Route::get('/', [BranchController::class, 'index'])->name('branch');
         Route::post('/store', [BranchController::class, 'store'])->name('branch.store');
         Route::get('/edit/{id}', [BranchController::class, 'edit'])->name('branch.edit');
         Route::put('/update/{id}', [BranchController::class, 'update'])->name('branch.update');
     });
 
-    Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
-    Route::get('/edit-profile',  [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::put('/update/profile',  [ProfileController::class, 'update'])->name('profile.update');
+    Route::get('/profile', [ProfileController::class, 'profile'])->name('profile')->middleware('role:5');
+    Route::get('/edit-profile',  [ProfileController::class, 'edit'])->name('profile.edit')->middleware('role:5');
+    Route::put('/update/profile',  [ProfileController::class, 'update'])->name('profile.update')->middleware('role:5');
 
     Route::prefix('order')->group(function () {
         Route::get('/', [OrderController::class, 'index'])->name('order');
@@ -65,7 +66,8 @@ Route::middleware(['auth'])->group(function () {
         Route::put('/update/{id}', [OrderController::class, 'update'])->name('order.update');
     });
 
-    Route::get('/order-history', [OrderController::class, 'history'])->name('order-history');
+    Route::get('/order-history', [OrderController::class, 'history'])->name('order.history');
+    Route::post('/assign-driver/{orderId}', [DriverOrderController::class, 'store'])->name('assign.driver');
 
     Route::get('/subscription', function () {
         return view('subscription');

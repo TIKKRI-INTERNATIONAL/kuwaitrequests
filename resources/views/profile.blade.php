@@ -107,48 +107,30 @@
                 </li>-->
 
                             <li class="nav-item"><!-- label-->
-                                <!--<div class="row navbar-vertical-label-wrapper mt-3 mb-2">
-                    <div class="col-auto navbar-vertical-label">Section Title 01</div>
-                    <div class="col ps-0">
-                      <hr class="mb-0 navbar-vertical-divider">
-                    </div>
-                  </div>-->
+
                                 <a class="nav-link" href="home" role="button">
                                     <div class="d-flex align-items-center"><span class="nav-link-icon"><span
                                                 class="fas fa-flag"></span></span><span
                                             class="nav-link-text ps-1">Dashboard</span></div>
                                 </a>
-                                <a class="nav-link" href="order-history" role="button">
-                                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span
-                                                class="fas fa-flag"></span></span><span
-                                            class="nav-link-text ps-1">Order History</span></div>
-                                </a>
-                                <a class="nav-link" href="branch-summery" role="button">
-                                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span
-                                                class="fas fa-flag"></span></span><span
-                                            class="nav-link-text ps-1">Branches Summary</span></div>
-                                </a>
+                                @if (Auth::user()->roles_id != 5)
+                                    <a class="nav-link" href="order-history" role="button">
+                                        <div class="d-flex align-items-center"><span class="nav-link-icon"><span
+                                                    class="fas fa-flag"></span></span><span
+                                                class="nav-link-text ps-1">Order History</span></div>
+                                    </a>
+                                    <a class="nav-link" href="branch-summery" role="button">
+                                        <div class="d-flex align-items-center"><span class="nav-link-icon"><span
+                                                    class="fas fa-flag"></span></span><span
+                                                class="nav-link-text ps-1">Branches Summary</span></div>
+                                    </a>
 
-                                <a class="nav-link" href="profile" role="button">
-                                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span
-                                                class="fas fa-flag"></span></span><span
-                                            class="nav-link-text ps-1">Setting</span></div>
-                                </a>
-
-                                <!-- <a class="nav-link dropdown-indicator" href="#faq" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="faq">
-                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-question-circle"></span></span><span class="nav-link-text ps-1">Sample 02</span></div>
-                  </a>
-                  <ul class="nav collapse" id="faq">
-                    <li class="nav-item"><a class="nav-link" href="$">
-                        <div class="d-flex align-items-center"><span class="nav-link-text ps-1">FSample 03</span></div>
-                      </a>
-                    </li>
-                  </ul>
-
-                </li>-->
-
-
-
+                                    <a class="nav-link" href="profile" role="button">
+                                        <div class="d-flex align-items-center"><span class="nav-link-icon"><span
+                                                    class="fas fa-flag"></span></span><span
+                                                class="nav-link-text ps-1">Setting</span></div>
+                                    </a>
+                                @endif
                             <li class="nav-item"><!-- label-->
                                 <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
                                     <div class="col-auto navbar-vertical-label">Language Switcher</div>
@@ -161,35 +143,13 @@
                                                 class="fas fa-rocket"></span></span><span
                                             class="nav-link-text ps-1">Arabic</span></div>
                                 </a>
-                                <!--<a class="nav-link dropdown-indicator" href="#customization" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="customization">
-                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-wrench"></span></span><span class="nav-link-text ps-1">Sample 05</span></div>
-                  </a>
-                  <ul class="nav collapse" id="customization">
-                    <li class="nav-item"><a class="nav-link" href="#">
-                        <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Sample 06</span><span class="badge rounded-pill ms-2 badge-subtle-success">Updated</span></div>
-                      </a>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="#">
-                        <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Sample 07</span></div>
-                      </a>
-                    </li>
-                  </ul>-->
+
                             </li>
                         </ul>
 
                     </div>
                 </div>
             </nav>
-
-
-
-
-
-
-
-
-
-
 
             <div class="content">
 
@@ -346,11 +306,11 @@
                                         <div class="card-body px-4 py-3 my-2">
 
                                             <div class="alert alert-success mt-3">
-                                                <h3 class="mb-0 fs-4 fw-bold text-left">{{  $user->name }}
+                                                <h3 class="mb-0 fs-4 fw-bold text-left">{{ $user->name }}
                                                 </h3>
                                             </div>
                                             <p class="text-800">LEGAL NAME<br>
-                                                {{  $user->name }}</p>
+                                                {{ $user->name }}</p>
                                         </div>
                                     </div>
                                 </div>

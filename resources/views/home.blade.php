@@ -96,35 +96,25 @@
                                                 class="fas fa-flag"></span></span><span
                                             class="nav-link-text ps-1">Dashboard</span></div>
                                 </a>
-                                <a class="nav-link" href="order-history" role="button">
-                                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span
-                                                class="fas fa-flag"></span></span><span class="nav-link-text ps-1">Order
-                                            History</span></div>
-                                </a>
-                                <a class="nav-link" href="branch-summery" role="button">
-                                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span
-                                                class="fas fa-flag"></span></span><span
-                                            class="nav-link-text ps-1">Branches Summary</span></div>
-                                </a>
+                                @if (Auth::user()->roles_id != 5)
+                                    <a class="nav-link" href="order-history" role="button">
+                                        <div class="d-flex align-items-center"><span class="nav-link-icon"><span
+                                                    class="fas fa-flag"></span></span><span
+                                                class="nav-link-text ps-1">Order
+                                                History</span></div>
+                                    </a>
+                                    <a class="nav-link" href="branch-summery" role="button">
+                                        <div class="d-flex align-items-center"><span class="nav-link-icon"><span
+                                                    class="fas fa-flag"></span></span><span
+                                                class="nav-link-text ps-1">Branches Summary</span></div>
+                                    </a>
 
-                                <a class="nav-link" href="profile" role="button">
-                                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span
-                                                class="fas fa-flag"></span></span><span
-                                            class="nav-link-text ps-1">Setting</span></div>
-                                </a>
-
-                                <!-- <a class="nav-link dropdown-indicator" href="#faq" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="faq">
-                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-question-circle"></span></span><span class="nav-link-text ps-1">Sample 02</span></div>
-                  </a>
-                  <ul class="nav collapse" id="faq">
-                    <li class="nav-item"><a class="nav-link" href="$">
-                        <div class="d-flex align-items-center"><span class="nav-link-text ps-1">FSample 03</span></div>
-                      </a>
-                    </li>
-                  </ul>
-
-                </li>-->
-
+                                    <a class="nav-link" href="profile" role="button">
+                                        <div class="d-flex align-items-center"><span class="nav-link-icon"><span
+                                                    class="fas fa-flag"></span></span><span
+                                                class="nav-link-text ps-1">Setting</span></div>
+                                    </a>
+                                @endif
                             <li class="nav-item"><!-- label-->
                                 <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
                                     <div class="col-auto navbar-vertical-label">Language Switcher</div>
@@ -137,19 +127,7 @@
                                                 class="fas fa-rocket"></span></span><span
                                             class="nav-link-text ps-1">Arabic</span></div>
                                 </a>
-                                <!--<a class="nav-link dropdown-indicator" href="#customization" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="customization">
-                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-wrench"></span></span><span class="nav-link-text ps-1">Sample 05</span></div>
-                  </a>
-                  <ul class="nav collapse" id="customization">
-                    <li class="nav-item"><a class="nav-link" href="#">
-                        <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Sample 06</span><span class="badge rounded-pill ms-2 badge-subtle-success">Updated</span></div>
-                      </a>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="#">
-                        <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Sample 07</span></div>
-                      </a>
-                    </li>
-                  </ul>-->
+
                             </li>
                         </ul>
 
@@ -220,8 +198,6 @@
                                 </div>
                             </div>
                         </li>
-
-
                         <li>
                             <a class="nav-link dropdown-toggle pe-0 ps-2 text-white px-4 fs-8" id="navbarDropdownUser"
                                 role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -239,8 +215,6 @@
                                         <button type="submit"
                                             class="dropdown-item link-600 fw-medium">Logout</button>
                                     </form>
-
-
                                 </div>
                             </div>
                         </li>
@@ -310,14 +284,15 @@
                                 <div class="col-sm-6 col-md-3">
                                     <div class="card overflow-hidden rounded-4" style="min-width: 12rem">
 
-
                                         <div class="card-body position-relative">
                                             <div class="row flex-center mb-2">
-                                                <div class="col-auto bg-success rounded-3">
-                                                    <a href="{{ url('order') }}">
-                                                        <h5 class="py-2 text-white fs-7">New Order</h5>
-                                                    </a>
-                                                </div>
+                                                @if (Auth::user()->roles_id != 5)
+                                                    <div class="col-auto bg-success rounded-3">
+                                                        <a href="{{ url('order') }}">
+                                                            <h5 class="py-2 text-white fs-7">New Order</h5>
+                                                        </a>
+                                                    </div>
+                                                @endif
                                                 <div class="col-auto bg-secondary rounded-3 ms-2">
                                                     <h5 class="py-2 text-white fs-7">{{ $pendingCount }}</h5>
                                                 </div>
@@ -337,7 +312,7 @@
                                                     <h5 class="py-2 text-white fs-7">{{ $deliveryCount }}</h5>
                                                 </div>
                                                 <div class="col-auto fs-10 text-600"><span
-                                                        class="mb-0 undefined fs-6">Drivers</span> </div>
+                                                        class="mb-0 undefined fs-6">Delivery</span> </div>
                                             </div>
                                         </div>
                                     </div>
@@ -415,7 +390,7 @@
                                                                     <div class="text-400 fw-normal fs-11">
                                                                         {{ $pending->created_at->format('Y-m-d H::m') }}
                                                                     </div>
-                                                                    <div class="bold">{{ $pending->customer->name }}
+                                                                    <div class="bold"> Customer -{{ $pending->customer->name }}
                                                                     </div>
                                                                     <div class="text-800 fw-normal fs-11">
                                                                         <span
@@ -433,7 +408,11 @@
                                                             <tr>
                                                                 <th class="ps-0 pb-0">
                                                                     <div class="text-400 fw-normal fs-11">
-                                                                      </div>
+                                                                        <form action="{{ route('assign.driver', ['orderId' => $pending->id]) }}" method="POST">
+                                                                            @csrf
+                                                                            <button type="submit" class="btn btn-primary">Assign</button>
+                                                                        </form>
+                                                                    </div>
                                                                 </th>
                                                                 <th class="pe-0 text-end pb-0">
                                                                     <div class="text-400 fw-normal fs-11">
@@ -497,7 +476,7 @@
                                                                         {{ $delivery->created_at->format('Y-m-d H::m') }}
                                                                     </div>
                                                                     <div class="bold">
-                                                                        {{ $delivery->customer->name }}
+                                                                        Customer -  {{ $delivery->customer->name }}
                                                                     </div>
                                                                     <div class="text-800 fw-normal fs-11">
                                                                         <span
@@ -515,7 +494,8 @@
                                                             <tr>
                                                                 <th class="ps-0 pb-0">
                                                                     <div class="text-400 fw-normal fs-11">
-                                                                       </div>
+                                                                       Driver - {{ $delivery->driverOrder->driver->name }}
+                                                                    </div>
                                                                 </th>
                                                                 <th class="pe-0 text-end pb-0">
                                                                     <div class="text-400 fw-normal fs-11">
@@ -579,7 +559,7 @@
                                                                         {{ $complete->created_at->format('Y-m-d H::m') }}
                                                                     </div>
                                                                     <div class="bold">
-                                                                        {{ $complete->customer->name }}
+                                                                        Customer -   {{ $complete->customer->name }}
                                                                     </div>
                                                                     <div class="text-800 fw-normal fs-11">
                                                                         <span
@@ -597,7 +577,7 @@
                                                             <tr>
                                                                 <th class="ps-0 pb-0">
                                                                     <div class="text-400 fw-normal fs-11">
-                                                                       </div>
+                                                                    </div>
                                                                 </th>
                                                                 <th class="pe-0 text-end pb-0">
                                                                     <div class="text-400 fw-normal fs-11">
@@ -659,7 +639,7 @@
                                                                     <div class="text-400 fw-normal fs-11">
                                                                         {{ $cancel->created_at->format('Y-m-d H::m') }}
                                                                     </div>
-                                                                    <div class="bold">{{ $cancel->customer->name }}
+                                                                    <div class="bold">Customer - {{ $cancel->customer->name }}
                                                                     </div>
                                                                     <div class="text-800 fw-normal fs-11">
                                                                         <span
@@ -677,7 +657,7 @@
                                                             <tr>
                                                                 <th class="ps-0 pb-0">
                                                                     <div class="text-400 fw-normal fs-11">
-                                                                       </div>
+                                                                    </div>
                                                                 </th>
                                                                 <th class="pe-0 text-end pb-0">
                                                                     <div class="text-400 fw-normal fs-11">
