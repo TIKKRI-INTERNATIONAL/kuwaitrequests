@@ -22,13 +22,16 @@ class DashboardController extends Controller
         $deliverys = Order::where('status', 'Delivery')->get();
         $deliveryCount = $deliverys->count();
 
+        $enroutes = Order::where('status', 'EnRoute')->get();
+        $enroutesCount = $enroutes->count();
+
         $completes = Order::where('status', 'Complete')->get();
         $completeCount = $completes->count();
 
         $cancels = Order::where('status', 'Cancel')->get();
         $cancelCount = $cancels->count();
 
-        return view('home', compact(['orders', 'pendings', 'pendingCount', 'deliverys', 'deliveryCount', 'completes', 'completeCount', 'cancels', 'cancelCount']));
+        return view('home', compact(['orders', 'pendings', 'pendingCount', 'deliverys', 'deliveryCount', 'enroutes', 'enroutesCount', 'completes', 'completeCount', 'cancels', 'cancelCount']));
     }
 
     /**

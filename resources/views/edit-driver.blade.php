@@ -100,13 +100,14 @@
                                                 class="fas fa-flag"></span></span><span
                                             class="nav-link-text ps-1">Dashboard</span></div>
                                 </a>
-                                @if (Auth::user()->roles_id != 5)
+
                                     <a class="nav-link" href="{{ url('order-history') }}" role="button">
                                         <div class="d-flex align-items-center"><span class="nav-link-icon"><span
                                                     class="fas fa-flag"></span></span><span
                                                 class="nav-link-text ps-1">Order
                                                 History</span></div>
                                     </a>
+                                    @if (Auth::user()->roles_id != 5)
                                     <a class="nav-link" href="{{ url('branch-summary') }}" role="button">
                                         <div class="d-flex align-items-center"><span class="nav-link-icon"><span
                                                     class="fas fa-flag"></span></span><span

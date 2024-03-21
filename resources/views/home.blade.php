@@ -96,13 +96,13 @@
                                                 class="fas fa-flag"></span></span><span
                                             class="nav-link-text ps-1">Dashboard</span></div>
                                 </a>
+
+                                <a class="nav-link" href="order-history" role="button">
+                                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span
+                                                class="fas fa-flag"></span></span><span class="nav-link-text ps-1">Order
+                                            History</span></div>
+                                </a>
                                 @if (Auth::user()->roles_id != 5)
-                                    <a class="nav-link" href="order-history" role="button">
-                                        <div class="d-flex align-items-center"><span class="nav-link-icon"><span
-                                                    class="fas fa-flag"></span></span><span
-                                                class="nav-link-text ps-1">Order
-                                                History</span></div>
-                                    </a>
                                     <a class="nav-link" href="branch-summery" role="button">
                                         <div class="d-flex align-items-center"><span class="nav-link-icon"><span
                                                     class="fas fa-flag"></span></span><span
@@ -283,7 +283,6 @@
                             <div class="row g-3 mb-3 py-5">
                                 <div class="col-sm-6 col-md-3">
                                     <div class="card overflow-hidden rounded-4" style="min-width: 12rem">
-
                                         <div class="card-body position-relative">
                                             <div class="row flex-center mb-2">
                                                 @if (Auth::user()->roles_id != 5)
@@ -299,12 +298,10 @@
                                                 <div class="col-auto fs-10 text-600"><span
                                                         class="mb-0 undefined fs-6">Pending</span> </div>
                                             </div>
-
                                         </div>
-
                                     </div>
                                 </div>
-                                <div class="col-sm-6 col-md-3">
+                                <div class="col-sm-6 col-md-2">
                                     <div class="card overflow-hidden rounded-4" style="min-width: 12rem">
                                         <div class="card-body position-relative">
                                             <div class="row flex-center mb-2">
@@ -313,6 +310,19 @@
                                                 </div>
                                                 <div class="col-auto fs-10 text-600"><span
                                                         class="mb-0 undefined fs-6">Delivery</span> </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-2">
+                                    <div class="card overflow-hidden rounded-4" style="min-width: 12rem">
+                                        <div class="card-body position-relative">
+                                            <div class="row flex-center mb-2">
+                                                <div class="col-auto bg-info rounded-3 ms-2">
+                                                    <h5 class="py-2 text-white fs-7">{{ $enroutesCount }}</h5>
+                                                </div>
+                                                <div class="col-auto fs-10 text-600"><span
+                                                        class="mb-0 undefined fs-6">En Route</span> </div>
                                             </div>
                                         </div>
                                     </div>
@@ -330,7 +340,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                     <div class="card overflow-hidden rounded-4" style="min-width: 12rem">
                                         <div class="card-body position-relative">
                                             <div class="row flex-center mb-2">
@@ -390,7 +400,8 @@
                                                                     <div class="text-400 fw-normal fs-11">
                                                                         {{ $pending->created_at->format('Y-m-d H::m') }}
                                                                     </div>
-                                                                    <div class="bold"> Customer -{{ $pending->customer->name }}
+                                                                    <div class="bold"> Customer
+                                                                        -{{ $pending->customer->name }}
                                                                     </div>
                                                                     <div class="text-800 fw-normal fs-11">
                                                                         <span
@@ -409,10 +420,13 @@
                                                                 <th class="ps-0 pb-0">
                                                                     <div class="text-400 fw-normal fs-11">
                                                                         @if (Auth::user()->roles_id == 5)
-                                                                        <form action="{{ route('assign.driver', ['orderId' => $pending->id]) }}" method="POST">
-                                                                            @csrf
-                                                                            <button type="submit" class="btn btn-primary">Assign</button>
-                                                                        </form>
+                                                                            <form
+                                                                                action="{{ route('assign.driver', ['orderId' => $pending->id]) }}"
+                                                                                method="POST">
+                                                                                @csrf
+                                                                                <button type="submit"
+                                                                                    class="btn btn-primary">Assign</button>
+                                                                            </form>
                                                                         @endif
                                                                     </div>
                                                                 </th>
@@ -478,7 +492,7 @@
                                                                         {{ $delivery->created_at->format('Y-m-d H::m') }}
                                                                     </div>
                                                                     <div class="bold">
-                                                                        Customer -  {{ $delivery->customer->name }}
+                                                                        Customer - {{ $delivery->customer->name }}
                                                                     </div>
                                                                     <div class="text-800 fw-normal fs-11">
                                                                         <span
@@ -496,7 +510,8 @@
                                                             <tr>
                                                                 <th class="ps-0 pb-0">
                                                                     <div class="text-400 fw-normal fs-11">
-                                                                       Driver - {{  $delivery->driverOrder ? $delivery->driverOrder->driver->name : '-' }}
+                                                                        Driver -
+                                                                        {{ $delivery->driverOrder ? $delivery->driverOrder->driver->name : '-' }}
                                                                     </div>
                                                                 </th>
                                                                 <th class="pe-0 text-end pb-0">
@@ -515,6 +530,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="col-lg-3 mt-6 mt-lg-0">
                                     <div class="card card-span h-100 rounded-4">
                                         <div class="card-span-img">
@@ -561,7 +577,7 @@
                                                                         {{ $complete->created_at->format('Y-m-d H::m') }}
                                                                     </div>
                                                                     <div class="bold">
-                                                                        Customer -   {{ $complete->customer->name }}
+                                                                        Customer - {{ $complete->customer->name }}
                                                                     </div>
                                                                     <div class="text-800 fw-normal fs-11">
                                                                         <span
@@ -641,7 +657,8 @@
                                                                     <div class="text-400 fw-normal fs-11">
                                                                         {{ $cancel->created_at->format('Y-m-d H::m') }}
                                                                     </div>
-                                                                    <div class="bold">Customer - {{ $cancel->customer->name }}
+                                                                    <div class="bold">Customer -
+                                                                        {{ $cancel->customer->name }}
                                                                     </div>
                                                                     <div class="text-800 fw-normal fs-11">
                                                                         <span

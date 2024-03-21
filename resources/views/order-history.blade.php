@@ -96,13 +96,14 @@
                                                 class="fas fa-flag"></span></span><span
                                             class="nav-link-text ps-1">Dashboard</span></div>
                                 </a>
-                                @if (Auth::user()->roles_id != 5)
+
                                     <a class="nav-link" href="order-history" role="button">
                                         <div class="d-flex align-items-center"><span class="nav-link-icon"><span
                                                     class="fas fa-flag"></span></span><span
                                                 class="nav-link-text ps-1">Order
                                                 History</span></div>
                                     </a>
+                                    @if (Auth::user()->roles_id != 5)
                                     <a class="nav-link" href="branch-summery" role="button">
                                         <div class="d-flex align-items-center"><span class="nav-link-icon"><span
                                                     class="fas fa-flag"></span></span><span
@@ -129,8 +130,13 @@
 
                                 <a class="nav-link" href="#" role="button">
                                     <div class="d-flex align-items-center"><span class="nav-link-icon"><span
-                                                class="fa fa-sign-out"></span></span><span
-                                            class="nav-link-text ps-1">Logout</span></div>
+                                                class="fa fa-sign-out"></span></span>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                            @csrf
+                                            <button type="submit"
+                                                class="dropdown-item link-600 fw-medium">Logout</button>
+                                        </form>
+                                    </div>
                                 </a>
 
                             </li>
@@ -198,13 +204,25 @@
                             </div>
                         </li>
 
-
-                        <li class="nav-item dropdown hidden d-xl-block">
-                            <div class="avatar avatar-xl">
-                                <img class="me-2 ms-2" src=" assets/img/icons/spot-illustrations/logo.png"
-                                    alt="" width="100">
+                        <li>
+                            <a class="nav-link dropdown-toggle pe-0 ps-2 text-white px-4 fs-8" id="navbarDropdownUser"
+                                role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <div class="avatar avatar-xl">
+                                    <img class="me-2 ms-2" src=" assets/img/icons/spot-illustrations/logo.png"
+                                        alt="" width="100">
+                                </div>
+                            </a>
+                            <div class="dropdown-menu dropdown-caret dropdown-caret dropdown-menu-end py-0"
+                                aria-labelledby="navbarDropdownUser">
+                                <div class="bg-white dark__bg-1000 rounded-2 py-2">
+                                    <a class="dropdown-item link-600 fw-medium" href="#">Change Password</a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                        @csrf
+                                        <button type="submit"
+                                            class="dropdown-item link-600 fw-medium">Logout</button>
+                                    </form>
+                                </div>
                             </div>
-
                         </li>
                     </ul>
                 </nav>
@@ -291,7 +309,8 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-md-3">
-                                                            <strong>Driver:</strong> {{ $order->driverOrder ? $order->driverOrder->driver->name : '-' }}
+                                                            <strong>Driver:</strong>
+                                                            {{ $order->driverOrder ? $order->driverOrder->driver->name : '-' }}
                                                         </div>
                                                         <div class="col-md-3">
                                                             <strong>Picked Up At:</strong>
