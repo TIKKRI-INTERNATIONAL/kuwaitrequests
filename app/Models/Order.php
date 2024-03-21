@@ -32,4 +32,9 @@ class Order extends Model
     {
         return $this->hasOne(User::class, 'id', 'users_id');
     }
+
+    public function driverOrder()
+    {
+        return $this->hasOne(DriverOrder::class, 'orders_id', 'id');
+    }
 }

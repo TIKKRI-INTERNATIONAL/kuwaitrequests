@@ -6,6 +6,7 @@ use App\Models\Order;
 use App\Http\Controllers\Controller;
 use App\Models\Address;
 use App\Models\Customer;
+use App\Models\Driver;
 use App\Models\PaymentType;
 use App\Models\VehicleType;
 use Illuminate\Http\Request;
@@ -105,7 +106,18 @@ class OrderController extends Controller
 
     public function history()
     {
-        $orders = Order::all();
+        $orders = Order::query();
+        $driverId = Driver::where('users_id', Auth::user()->id)->first();
+
+        // Check if the user is authenticated and has a role_id of 5
+        if (Auth::check() && Auth::user()->roles_id == 5) {
+            $orders->whereHas('driverOrder', function ($query) use ($driverId){
+                $query->where('drivers_id',  $driverId->id);
+            });
+        }
+
+        $orders = $orders->get();
+
         return view('order-history', compact(['orders']));
     }
 

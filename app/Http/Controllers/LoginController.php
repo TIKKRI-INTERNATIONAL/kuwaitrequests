@@ -27,11 +27,11 @@ class LoginController extends Controller
             $credentials = $request->only('email', 'password');
 
             if (!Auth::attempt($credentials)) {
-                throw ValidationException::withMessages([
-                    'email' => ['Invalid email or password'],
-                ]);
+                    // Invalid email, name, or password
+                    throw ValidationException::withMessages([
+                        'email' => ['Invalid email or password'],
+                    ]);
             }
-
             // Authentication passed, commit transaction
             DB::commit();
 
@@ -42,7 +42,41 @@ class LoginController extends Controller
             DB::rollBack();
 
             // Handle the exception
-            return redirect()->back()->withInput()->withErrors(['email' => $e->getMessage()]);
+            return redirect()->back()->withInput()->withErrors(['error' => $e->getMessage()]);
+        }
+    }
+
+    public function loginDriver()
+    {
+        return view('login-driver');
+    }
+
+    public function loginDriverStore(Request $request)
+    {
+        try {
+            // Begin transaction
+            DB::beginTransaction();
+
+            // Attempt to authenticate
+            $credentials = $request->only('name', 'password');
+
+            if (!Auth::attempt($credentials)) {
+                    // Invalid email, name, or password
+                    throw ValidationException::withMessages([
+                        'name' => ['Invalid name or password'],
+                    ]);
+            }
+            // Authentication passed, commit transaction
+            DB::commit();
+
+            // Redirect authenticated user
+            return redirect()->intended('/home');
+        } catch (\Exception $e) {
+            // Something went wrong, rollback transaction
+            DB::rollBack();
+
+            // Handle the exception
+            return redirect()->back()->withInput()->withErrors(['error' => $e->getMessage()]);
         }
     }
 
@@ -57,7 +91,7 @@ class LoginController extends Controller
                 'name' => 'required|string|max:255',
                 'email' => 'required|string|email|max:255|unique:users',
                 'password' => 'required|string|confirmed|min:8',
-                'terms' => 'required|accepted', // Assuming a terms acceptance checkbox
+                'terms' => 'required|accepted',
             ]);
 
             // Create the user
@@ -73,7 +107,7 @@ class LoginController extends Controller
             DB::commit();
 
             // authenticate the user after registration
-             auth()->login($user);
+            auth()->login($user);
 
             // Redirect the user after registration
             return redirect('/home');

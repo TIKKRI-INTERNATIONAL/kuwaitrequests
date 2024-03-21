@@ -96,23 +96,25 @@
                                                 class="fas fa-flag"></span></span><span
                                             class="nav-link-text ps-1">Dashboard</span></div>
                                 </a>
+
                                 <a class="nav-link" href="order-history" role="button">
                                     <div class="d-flex align-items-center"><span class="nav-link-icon"><span
                                                 class="fas fa-flag"></span></span><span class="nav-link-text ps-1">Order
                                             History</span></div>
                                 </a>
-                                <a class="nav-link" href="branch-summery" role="button">
-                                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span
-                                                class="fas fa-flag"></span></span><span
-                                            class="nav-link-text ps-1">Branches Summary</span></div>
-                                </a>
+                                @if (Auth::user()->roles_id != 5)
+                                    <a class="nav-link" href="branch-summery" role="button">
+                                        <div class="d-flex align-items-center"><span class="nav-link-icon"><span
+                                                    class="fas fa-flag"></span></span><span
+                                                class="nav-link-text ps-1">Branches Summary</span></div>
+                                    </a>
 
-                                <a class="nav-link" href="profile" role="button">
-                                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span
-                                                class="fas fa-flag"></span></span><span
-                                            class="nav-link-text ps-1">Setting</span></div>
-                                </a>
-
+                                    <a class="nav-link" href="profile" role="button">
+                                        <div class="d-flex align-items-center"><span class="nav-link-icon"><span
+                                                    class="fas fa-flag"></span></span><span
+                                                class="nav-link-text ps-1">Setting</span></div>
+                                    </a>
+                                @endif
                             <li class="nav-item"><!-- label-->
                                 <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
                                     <div class="col-auto navbar-vertical-label">Language Switcher</div>

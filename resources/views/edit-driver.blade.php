@@ -100,22 +100,25 @@
                                                 class="fas fa-flag"></span></span><span
                                             class="nav-link-text ps-1">Dashboard</span></div>
                                 </a>
-                                <a class="nav-link" href="{{ url('order-history') }}" role="button">
-                                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span
-                                                class="fas fa-flag"></span></span><span class="nav-link-text ps-1">Order
-                                            History</span></div>
-                                </a>
-                                <a class="nav-link" href="{{ url('branch-summary') }}" role="button">
-                                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span
-                                                class="fas fa-flag"></span></span><span
-                                            class="nav-link-text ps-1">Branches Summary</span></div>
-                                </a>
-                                <a class="nav-link" href="{{ url('profile') }}" role="button">
-                                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span
-                                                class="fas fa-flag"></span></span><span
-                                            class="nav-link-text ps-1">Setting</span></div>
-                                </a>
 
+                                    <a class="nav-link" href="{{ url('order-history') }}" role="button">
+                                        <div class="d-flex align-items-center"><span class="nav-link-icon"><span
+                                                    class="fas fa-flag"></span></span><span
+                                                class="nav-link-text ps-1">Order
+                                                History</span></div>
+                                    </a>
+                                    @if (Auth::user()->roles_id != 5)
+                                    <a class="nav-link" href="{{ url('branch-summary') }}" role="button">
+                                        <div class="d-flex align-items-center"><span class="nav-link-icon"><span
+                                                    class="fas fa-flag"></span></span><span
+                                                class="nav-link-text ps-1">Branches Summary</span></div>
+                                    </a>
+                                    <a class="nav-link" href="{{ url('profile') }}" role="button">
+                                        <div class="d-flex align-items-center"><span class="nav-link-icon"><span
+                                                    class="fas fa-flag"></span></span><span
+                                                class="nav-link-text ps-1">Setting</span></div>
+                                    </a>
+                                @endif
                             <li class="nav-item"><!-- label-->
                                 <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
                                     <div class="col-auto navbar-vertical-label">Language Switcher</div>
@@ -419,23 +422,26 @@
                                                             class="table table-borderless fs-10 mb-0 text-start mb-3">
 
                                                             @foreach ($drivers as $driver)
-                                                            <tr class="border-bottom">
-                                                                <th class="ps-0">
-                                                                    <div class="text-black fw-bold fs-9 ">{{ $driver->name }}</div>
-                                                                    <div class="bold">{{ $driver->type->name }}</div>
-                                                                    <div class="text-800 fw-normal fs-11"> {{ $driver->vehicle_liecence }}</div>
-                                                                </th>
-                                                                <th class="pe-0 text-end ">
-                                                                    <div class="text-success bold fs-6">
-                                                                        <div
-                                                                            class="dropdown font-sans-serif btn-reveal-trigger">
-                                                                            <a class="btn btn-falcon-default btn-sm text-600"
-                                                                                href="{{ route('driver.edit', $driver->id) }}"><span
-                                                                                    class="fas fa-pencil-alt"></span>Edit</a>
+                                                                <tr class="border-bottom">
+                                                                    <th class="ps-0">
+                                                                        <div class="text-black fw-bold fs-9 ">
+                                                                            {{ $driver->name }}</div>
+                                                                        <div class="bold">{{ $driver->type->name }}
                                                                         </div>
-                                                                    </div>
-                                                                </th>
-                                                            </tr>
+                                                                        <div class="text-800 fw-normal fs-11">
+                                                                            {{ $driver->vehicle_liecence }}</div>
+                                                                    </th>
+                                                                    <th class="pe-0 text-end ">
+                                                                        <div class="text-success bold fs-6">
+                                                                            <div
+                                                                                class="dropdown font-sans-serif btn-reveal-trigger">
+                                                                                <a class="btn btn-falcon-default btn-sm text-600"
+                                                                                    href="{{ route('driver.edit', $driver->id) }}"><span
+                                                                                        class="fas fa-pencil-alt"></span>Edit</a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </th>
+                                                                </tr>
                                                             @endforeach
                                                         </table>
 
