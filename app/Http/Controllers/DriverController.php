@@ -46,7 +46,7 @@ class DriverController extends Controller
             // Create a new driver instance using the create method
             $user = User::create([
                 'name' => $validatedData['name'],
-                'email' => '',
+                'email' => '-',
                 'password' => $validatedData['password'],
                 'roles_id' => 5,
                 'branches_id' => $validatedData['branch'],

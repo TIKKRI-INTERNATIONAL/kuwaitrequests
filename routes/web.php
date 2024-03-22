@@ -70,6 +70,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/order-history', [OrderController::class, 'history'])->name('order.history');
     Route::post('/assign-driver/{orderId}', [DriverOrderController::class, 'store'])->name('assign.driver');
+    Route::post('/enroute-driver', [DriverOrderController::class, 'enroute'])->name('enroute.driver');
+    Route::post('/complete-driver/{orderId}', [DriverOrderController::class, 'complete'])->name('complete.driver');
+    Route::post('/cancel-driver/{orderId}', [DriverOrderController::class, 'cancel'])->name('cancel.driver');
 
     Route::get('/subscription', function () {
         return view('subscription');
