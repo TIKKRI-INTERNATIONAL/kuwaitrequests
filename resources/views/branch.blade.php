@@ -48,13 +48,21 @@
                     <br>
                 </div>
                 <div class="card theme-wizard mb-5">
-
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <div class="card-body py-4">
                         <div class="tab-content">
                             <div class="tab-pane active px-sm-3 px-md-5" role="tabpanel"
                                 aria-labelledby="bootstrap-wizard-tab1" id="bootstrap-wizard-tab1">
 
-                                <form method="POST" action="{{ route('branch.store') }}">
+                                <form id="branchForm" method="POST" action="{{ route('branch.store') }}">
                                     @csrf
                                     <div class="row gx-2">
                                         <div class="mb-3 col-sm-6">
@@ -82,7 +90,6 @@
                                         type="submit">Create<span class="fas fa-chevron-right ms-2"
                                             data-fa-transform="shrink-3"> </span></button>
                                 </form>
-
                             </div>
 
                             <div class="card-footer bg-body-tertiary">
@@ -99,10 +106,7 @@
 
                     <div class="col-lg-12 col-md-6 pt-3 pb-3">
                         <div class="card h-100">
-
                             <div class="card-body bg-body-tertiary">
-
-
                                 <table class="table table-borderless fs-10 mb-0 text-start mb-3">
                                     @foreach ($branches as $branch)
                                         <tr class="border-bottom">
@@ -138,7 +142,8 @@
                                 <div class="row justify-content-between fs-10">
                                     <div class="col-12 col-sm-auto text-center">
                                         <p class="mb-0 text-600 opacity-85">All Rights Reserved.
-                                            <span class="d-none d-sm-inline-block">| </span><br class="d-sm-none"> 2024
+                                            <span class="d-none d-sm-inline-block">| </span><br class="d-sm-none">
+                                            2024
                                             &copy; <a class="text-white opacity-85" href="#">Delivery Solution
                                                 Portal</a>
                                         </p>
@@ -149,13 +154,37 @@
                         </div><!-- end of .container-->
                     </section>
                 </div>
-
-
-
-
             </div>
 
         </div>
+
+        <script>
+            // Function to get input values from the modal and submit the branchForm
+            $('#saveAddress').on('click', function() {
+                // Gather input values from the modal
+                var area = $('#area').val();
+                var block = $('#block').val();
+                var street = $('#street').val();
+                var building = $('#building').val();
+                var jedda = $('#jedda').val();
+                var apartment = $('#apartment').val();
+                var floor = $('#floor').val();
+                // Gather other input values as needed
+
+                // Append the modal input values to the branchForm
+                $('#branchForm').append('<input type="hidden" name="area" value="' + area + '">');
+                $('#branchForm').append('<input type="hidden" name="block" value="' + block + '">');
+                $('#branchForm').append('<input type="hidden" name="street" value="' + street + '">');
+                $('#branchForm').append('<input type="hidden" name="building_no" value="' + building + '">');
+                $('#branchForm').append('<input type="hidden" name="jedda" value="' + jedda + '">');
+                $('#branchForm').append('<input type="hidden" name="apartment" value="' + apartment + '">');
+                $('#branchForm').append('<input type="hidden" name="floor" value="' + floor + '">');
+                // Append other input values as needed
+
+                // Submit the branchForm
+                $('#branchForm').submit();
+            });
+        </script>
         </main>
         <!-- ===============================================--><!--    End of Main Content--><!-- ===============================================-->
 

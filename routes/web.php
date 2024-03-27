@@ -68,6 +68,9 @@ Route::middleware(['auth'])->group(function () {
         Route::put('/update/{id}', [OrderController::class, 'update'])->name('order.update');
     });
 
+    Route::get('/get-area', [BranchController::class, 'getArea'])->name('get.area');
+    Route::get('/get-block', [BranchController::class, 'getABlock'])->name('get.block');
+
     Route::get('/order-history', [OrderController::class, 'history'])->name('order.history');
     Route::post('/assign-driver/{orderId}', [DriverOrderController::class, 'store'])->name('assign.driver');
     Route::post('/enroute-driver', [DriverOrderController::class, 'enroute'])->name('enroute.driver');
